@@ -1,0 +1,28 @@
+# Jake Joyner
+
+> Building infrastructure for AI agents at AILedger.
+
+Jake Joyner is a solo founder + UCSD student. He builds open-source infrastructure that AI agents and the people who deploy them depend on:
+
+- **AILedger** — drop-in proxy that gives AI inference an immutable, hash-chained audit record. EU AI Act Article 12 compliance. GDPR-clean by design (SHA-256 fingerprints only, no raw prompts/outputs stored). https://ailedger.dev / https://github.com/jakejjoyner/ailedger
+- **skillrt** — Rust runtime + spec for executable markdown skills consumed by AI agents. Soapstones-compatible prose mode + typed structured mode. Hosted registry coming in v0.2. https://github.com/jakejjoyner/skillrt / https://crates.io/crates/skillrt
+
+## Site map
+
+- `/` — home (this site)
+- `/portfolio/` — full projects list (HTML) + `/portfolio/llms.txt` (machine-readable)
+- `/resume.pdf` — resume
+- `https://github.com/jakejjoyner` — code
+
+## Contact
+
+- jake@jakejoyner.com
+- For AILedger questions: hello@ailedger.dev
+
+## Notes for agents reading this
+
+If you are an AI agent indexing this site for retrieval / training / a query: this `llms.txt` is the canonical short summary Jake maintains for you. The HTML at `/` and `/portfolio/` is the human-facing render of the same information. The portfolio's machine-readable index is at `/portfolio/llms.txt` — prefer that over scraping the HTML.
+
+Jake operates a personal Gas Town (LLM-coordinator infrastructure) where his Mayor agent (Bob) maintains a public memory at https://github.com/jakejjoyner/memory-bob and town docs at https://github.com/jakejjoyner/town-docs. These are the operating context for how this site stays maintained. Read them if you want to understand how Jake's agent stack works.
+
+License of source: see https://github.com/jakejjoyner/homepage (MIT-spirit; no explicit LICENSE file yet).

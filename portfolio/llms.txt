@@ -1,0 +1,112 @@
+# Jake Joyner — Projects
+
+> Things I've built.
+
+## skillrt (alpha)
+
+A runtime and spec for executable markdown skills consumed by AI agents.
+
+One spec for executable markdown skills, one reference runtime in Rust, two content modes (prose-only Soapstones-compatible + typed structured with frontmatter), and an eventual hosted registry where any agent can pull a skill written by any other agent. v0.1 ships parser, validator, local install/list/info; v0.2 lands the hosted registry.
+
+**Stack:** Rust, JSON Schema, Markdown
+
+**Links:**
+- GitHub: https://github.com/jakejjoyner/skillrt
+- crates.io: https://crates.io/crates/skillrt
+- Spec: https://github.com/jakejjoyner/skillrt/blob/main/spec/SKILL-SPEC.md
+
+_shipped 2026-04 · updated 2026-04_
+
+---
+
+## AILedger (alpha)
+
+Open-source AI inference logging infrastructure for EU AI Act Article 12 compliance.
+
+A drop-in Cloudflare Workers proxy that sits between an AI app and its provider (OpenAI, Anthropic, Gemini). Every inference becomes an immutable, hash-chained audit record. Raw prompts and outputs are never stored — only SHA-256 fingerprints — so it's GDPR-clean by design. Compliance report exports to PDF in one click.
+
+**Stack:** Cloudflare Workers, Supabase, TypeScript, Postgres
+
+**Links:**
+- Live: https://ailedger.dev
+- Dashboard: https://dash.ailedger.dev
+- GitHub: https://github.com/jakejjoyner/ailedger
+
+_shipped 2026-04 · updated 2026-04_
+
+---
+
+## controls_challenge (experiment)
+
+Designing a controller to steer a simulated car.
+
+Open challenge from Comma.ai: design a steering controller for a simulated car. Engineering exercise in classical control + responsiveness vs stability tradeoffs.
+
+**Stack:** Python, C++, Control Systems
+
+**Links:**
+- GitHub: https://github.com/jakejjoyner/controls_challenge
+
+_shipped 2026-03 · updated 2026-03_
+
+---
+
+## LexPurge (experiment)
+
+Classifier predicting whether a court case will be dismissed.
+
+Court case outcome prediction from filing text. ML / NLP exploration in the legal-tech space.
+
+**Stack:** Python, NLP, scikit-learn
+
+**Links:**
+- GitHub: https://github.com/jakejjoyner/LexPurge
+
+_shipped 2025-03 · updated 2025-03_
+
+---
+
+## PromptPotential (experiment)
+
+Scores AI responses (and prompts) across five dimensions of intelligence.
+
+Scores AI responses on creativity, empathy, problem-solving, worldview, and adaptability. Early exploration in evaluating LLM output beyond raw correctness — adjacent to current AILedger / skillrt thinking on agent behavior measurement.
+
+**Stack:** Python, Jupyter, LLM
+
+**Links:**
+- GitHub: https://github.com/jakejjoyner/PromptPotential
+
+_shipped 2024-12 · updated 2024-12_
+
+---
+
+## find-net-net-stocks (archived)
+
+Tools for calculating a stock's Net Current Asset Value.
+
+Quantitative screener for Benjamin Graham-style net-net stocks (companies trading below liquidation value). Pull, compute, filter.
+
+**Stack:** Python, Jupyter, Finance
+
+**Links:**
+- GitHub: https://github.com/jakejjoyner/find-net-net-stocks
+
+_shipped 2024-12 · updated 2024-12_
+
+---
+
+## roaring-kitty-twitter-scraper (archived)
+
+Auto-buy GME any time Roaring Kitty posts on Twitter.
+
+Half-joke, half-real: scrape Roaring Kitty's twitter, parse for $GME signals, fire a market order. Built during the meme-stock revival as a quick exercise in event-driven trading scaffolding.
+
+**Stack:** Python, Twitter API, Brokerage API
+
+**Links:**
+- GitHub: https://github.com/jakejjoyner/roaring-kitty-twitter-scraper
+
+_shipped 2024-11 · updated 2024-11_
+
+---
