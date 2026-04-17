@@ -149,6 +149,10 @@ def main() -> int:
     )
     INDEX.write_text(out)
     print(f"  ✓ wrote {INDEX} ({len(out)} bytes)")
+
+    # Also refresh llms.txt for agent consumers
+    import subprocess
+    subprocess.run([str(ROOT / "build-llms.py")], check=False)
     return 0
 
 
