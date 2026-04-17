@@ -1,0 +1,4 @@
+# nothing sensitive in homepage by default; gitignore is mostly for build artifacts
+*.swp
+.DS_Store
+.~lock.*

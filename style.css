@@ -1,0 +1,101 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0d1117;
+  --text: #c9d1d9;
+  --muted: #8b949e;
+  --link: #58a6ff;
+  --border: #21262d;
+}
+
+html {
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+}
+
+main {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+h1 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #e6edf3;
+  margin-bottom: 0.5rem;
+}
+
+blockquote {
+  padding-left: 1rem;
+  border-left: 1px solid #ccc;
+  margin: 1rem 0 0.7rem 1rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+section p {
+  line-height: 1.8;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+section p a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+section p a:hover {
+  text-decoration: underline;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+
+.links a {
+  color: var(--link);
+  text-decoration: none;
+  font-size: 0.875rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.15s;
+}
+
+.links a:hover {
+  color: #e6edf3;
+}
+
+section > p {
+    margin-left: 0.7rem;
+}
+
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start;
+    padding: 2.5rem 1.25rem;
+  }
+}

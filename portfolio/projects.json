@@ -1,0 +1,41 @@
+{
+  "_comment": "Source of truth for jakejoyner.com/portfolio. Owned by Jake. Edit + run build.sh to regenerate index.html.",
+  "version": 1,
+  "site": {
+    "title": "Jake Joyner — Projects",
+    "subtitle": "Things I've built. Source of truth for what I'm shipping.",
+    "footer_text": "Built in La Jolla. Source on desktop:~/homepage/portfolio."
+  },
+  "projects": [
+    {
+      "id": "ailedger",
+      "title": "AILedger",
+      "tagline": "Open-source AI inference logging infrastructure for EU AI Act Article 12 compliance.",
+      "status": "alpha",
+      "stack": ["Cloudflare Workers", "Supabase", "TypeScript", "Postgres"],
+      "links": [
+        {"label": "Live", "href": "https://ailedger.dev"},
+        {"label": "Dashboard", "href": "https://dash.ailedger.dev"},
+        {"label": "GitHub", "href": "https://github.com/jakejjoyner/ailedger"}
+      ],
+      "shipped": "2026-04",
+      "updated": "2026-04",
+      "description": "A drop-in Cloudflare Workers proxy that sits between an AI app and its provider (OpenAI, Anthropic, Gemini). Every inference becomes an immutable, hash-chained audit record. Raw prompts and outputs are never stored — only SHA-256 fingerprints — so it's GDPR-clean by design. Compliance report exports to PDF in one click."
+    },
+    {
+      "id": "skillrt",
+      "title": "skillrt",
+      "tagline": "A runtime and spec for executable markdown skills consumed by AI agents.",
+      "status": "alpha",
+      "stack": ["Rust", "JSON Schema", "Markdown"],
+      "links": [
+        {"label": "GitHub", "href": "https://github.com/jakejjoyner/skillrt"},
+        {"label": "crates.io", "href": "https://crates.io/crates/skillrt"},
+        {"label": "Spec", "href": "https://github.com/jakejjoyner/skillrt/blob/main/spec/SKILL-SPEC.md"}
+      ],
+      "shipped": "2026-04",
+      "updated": "2026-04",
+      "description": "One spec for executable markdown skills, one reference runtime in Rust, two content modes (prose-only Soapstones-compatible + typed structured with frontmatter), and an eventual hosted registry where any agent can pull a skill written by any other agent. v0.1 ships parser, validator, local install/list/info; v0.2 lands the hosted registry."
+    }
+  ]
+}
