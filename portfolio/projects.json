@@ -2,9 +2,9 @@
   "_comment": "Source of truth for jakejoyner.com/portfolio. Owned by Jake. Edit + run build.sh to regenerate index.html.",
   "version": 1,
   "site": {
-    "title": "Jake Joyner — Projects",
-    "subtitle": "Things I've built. Source of truth for what I'm shipping.",
-    "footer_text": "Built in La Jolla. Source on desktop:~/homepage/portfolio."
+    "title": "Jake Joyner \u2014 Projects",
+    "subtitle": "Things I've built.",
+    "footer_text": ""
   },
   "projects": [
     {
@@ -12,30 +12,157 @@
       "title": "AILedger",
       "tagline": "Open-source AI inference logging infrastructure for EU AI Act Article 12 compliance.",
       "status": "alpha",
-      "stack": ["Cloudflare Workers", "Supabase", "TypeScript", "Postgres"],
+      "stack": [
+        "Cloudflare Workers",
+        "Supabase",
+        "TypeScript",
+        "Postgres"
+      ],
       "links": [
-        {"label": "Live", "href": "https://ailedger.dev"},
-        {"label": "Dashboard", "href": "https://dash.ailedger.dev"},
-        {"label": "GitHub", "href": "https://github.com/jakejjoyner/ailedger"}
+        {
+          "label": "Live",
+          "href": "https://ailedger.dev"
+        },
+        {
+          "label": "Dashboard",
+          "href": "https://dash.ailedger.dev"
+        },
+        {
+          "label": "GitHub",
+          "href": "https://github.com/jakejjoyner/ailedger"
+        }
       ],
       "shipped": "2026-04",
       "updated": "2026-04",
-      "description": "A drop-in Cloudflare Workers proxy that sits between an AI app and its provider (OpenAI, Anthropic, Gemini). Every inference becomes an immutable, hash-chained audit record. Raw prompts and outputs are never stored — only SHA-256 fingerprints — so it's GDPR-clean by design. Compliance report exports to PDF in one click."
+      "description": "A drop-in Cloudflare Workers proxy that sits between an AI app and its provider (OpenAI, Anthropic, Gemini). Every inference becomes an immutable, hash-chained audit record. Raw prompts and outputs are never stored \u2014 only SHA-256 fingerprints \u2014 so it's GDPR-clean by design. Compliance report exports to PDF in one click."
     },
     {
       "id": "skillrt",
       "title": "skillrt",
       "tagline": "A runtime and spec for executable markdown skills consumed by AI agents.",
       "status": "alpha",
-      "stack": ["Rust", "JSON Schema", "Markdown"],
+      "stack": [
+        "Rust",
+        "JSON Schema",
+        "Markdown"
+      ],
       "links": [
-        {"label": "GitHub", "href": "https://github.com/jakejjoyner/skillrt"},
-        {"label": "crates.io", "href": "https://crates.io/crates/skillrt"},
-        {"label": "Spec", "href": "https://github.com/jakejjoyner/skillrt/blob/main/spec/SKILL-SPEC.md"}
+        {
+          "label": "GitHub",
+          "href": "https://github.com/jakejjoyner/skillrt"
+        },
+        {
+          "label": "crates.io",
+          "href": "https://crates.io/crates/skillrt"
+        },
+        {
+          "label": "Spec",
+          "href": "https://github.com/jakejjoyner/skillrt/blob/main/spec/SKILL-SPEC.md"
+        }
       ],
       "shipped": "2026-04",
       "updated": "2026-04",
       "description": "One spec for executable markdown skills, one reference runtime in Rust, two content modes (prose-only Soapstones-compatible + typed structured with frontmatter), and an eventual hosted registry where any agent can pull a skill written by any other agent. v0.1 ships parser, validator, local install/list/info; v0.2 lands the hosted registry."
+    },
+    {
+      "id": "controls-challenge",
+      "title": "controls_challenge",
+      "tagline": "Designing a controller to steer a simulated car.",
+      "status": "experiment",
+      "stack": [
+        "Python",
+        "C++",
+        "Control Systems"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/jakejjoyner/controls_challenge"
+        }
+      ],
+      "shipped": "2026-03",
+      "updated": "2026-03",
+      "description": "Open challenge from Comma.ai: design a steering controller for a simulated car. Engineering exercise in classical control + responsiveness vs stability tradeoffs."
+    },
+    {
+      "id": "prompt-potential",
+      "title": "PromptPotential",
+      "tagline": "Scores AI responses (and prompts) across five dimensions of intelligence.",
+      "status": "experiment",
+      "stack": [
+        "Python",
+        "Jupyter",
+        "LLM"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/jakejjoyner/PromptPotential"
+        }
+      ],
+      "shipped": "2024-12",
+      "updated": "2024-12",
+      "description": "Scores AI responses on creativity, empathy, problem-solving, worldview, and adaptability. Early exploration in evaluating LLM output beyond raw correctness \u2014 adjacent to current AILedger / skillrt thinking on agent behavior measurement."
+    },
+    {
+      "id": "lexpurge",
+      "title": "LexPurge",
+      "tagline": "Classifier predicting whether a court case will be dismissed.",
+      "status": "experiment",
+      "stack": [
+        "Python",
+        "NLP",
+        "scikit-learn"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/jakejjoyner/LexPurge"
+        }
+      ],
+      "shipped": "2025-03",
+      "updated": "2025-03",
+      "description": "Court case outcome prediction from filing text. ML / NLP exploration in the legal-tech space."
+    },
+    {
+      "id": "find-net-net-stocks",
+      "title": "find-net-net-stocks",
+      "tagline": "Tools for calculating a stock's Net Current Asset Value.",
+      "status": "archived",
+      "stack": [
+        "Python",
+        "Jupyter",
+        "Finance"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/jakejjoyner/find-net-net-stocks"
+        }
+      ],
+      "shipped": "2024-12",
+      "updated": "2024-12",
+      "description": "Quantitative screener for Benjamin Graham-style net-net stocks (companies trading below liquidation value). Pull, compute, filter."
+    },
+    {
+      "id": "roaring-kitty-scraper",
+      "title": "roaring-kitty-twitter-scraper",
+      "tagline": "Auto-buy GME any time Roaring Kitty posts on Twitter.",
+      "status": "archived",
+      "stack": [
+        "Python",
+        "Twitter API",
+        "Brokerage API"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/jakejjoyner/roaring-kitty-twitter-scraper"
+        }
+      ],
+      "shipped": "2024-11",
+      "updated": "2024-11",
+      "description": "Half-joke, half-real: scrape Roaring Kitty's twitter, parse for $GME signals, fire a market order. Built during the meme-stock revival as a quick exercise in event-driven trading scaffolding."
     }
   ]
 }
