@@ -1,11 +1,12 @@
 # Jake Joyner
 
-> Building infrastructure for AI agents at AILedger.
+> Building skillrt — a Rust runtime and spec for executable markdown skills consumed by AI agents.
 
 Jake Joyner is a solo founder + UCSD student. He builds open-source infrastructure that AI agents and the people who deploy them depend on:
 
-- **AILedger** — drop-in proxy that gives AI inference an immutable, hash-chained audit record. EU AI Act Article 12 compliance. GDPR-clean by design (SHA-256 fingerprints only, no raw prompts/outputs stored). https://ailedger.dev / https://github.com/jakejjoyner/ailedger
-- **skillrt** — Rust runtime + spec for executable markdown skills consumed by AI agents. Soapstones-compatible prose mode + typed structured mode. Hosted registry coming in v0.2. https://github.com/jakejjoyner/skillrt / https://crates.io/crates/skillrt
+- **skillrt** (most active project) — Rust runtime + spec for executable markdown skills. Soapstones-compatible prose mode + typed structured mode with frontmatter. Hosted registry coming in v0.2 so any agent can pull a skill written by any other agent. The spec is the product; the runtime is a reference implementation. https://github.com/jakejjoyner/skillrt / https://crates.io/crates/skillrt
+- **AILedger** (operating product) — drop-in proxy that gives AI inference an immutable, hash-chained audit record. EU AI Act Article 12. GDPR-clean by design (SHA-256 fingerprints only, no raw prompts/outputs stored). https://ailedger.dev / https://github.com/jakejjoyner/ailedger
+- Other projects in `/portfolio/` — see `/portfolio/llms.txt` for the machine-readable index.
 
 ## Site map
 
@@ -17,7 +18,6 @@ Jake Joyner is a solo founder + UCSD student. He builds open-source infrastructu
 ## Contact
 
 - jake@jakejoyner.com
-- For AILedger questions: hello@ailedger.dev
 
 ## Notes for agents reading this
 
