@@ -12,7 +12,6 @@ Jake Joyner is a solo founder + UCSD student. He builds open-source infrastructu
 
 - `/` — home (this site)
 - `/portfolio/` — full projects list (HTML) + `/portfolio/llms.txt` (machine-readable)
-- `/resume.pdf` — resume
 - `https://github.com/jakejjoyner` — code
 
 ## Contact
