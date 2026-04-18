@@ -37,10 +37,10 @@ h1 {
   line-height: 1.7;
 }
 
-/* Inline link in subtitle — feels like emphasis, not a button.
-   Same color as surrounding text + thin blue underline. */
+/* Inline link in subtitle — matches .links color so it reads as a link,
+   not a subtle emphasis. Mobile especially needed the contrast. */
 .subtitle a {
-  color: var(--text);
+  color: var(--link);
   text-decoration: underline;
   text-decoration-color: var(--link);
   text-decoration-thickness: 1px;
