@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jake Joyner — CV</title>
+  <meta name="description" content="Engineer and founder, building tamper-evident audit infrastructure for AI inference." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Jake Joyner — CV" />
+  <meta property="og:description" content="Engineer and founder, building tamper-evident audit infrastructure for AI inference." />
+  <meta property="og:url" content="https://jakejoyner.com/cv/" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    /* CV-specific layout — extends homepage style.css */
+    main { max-width: 760px; gap: 1.75rem; }
+    .cv-header { border-bottom: 1px solid var(--border); padding-bottom: 1.25rem; }
+    .cv-header h1 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .cv-meta {
+      color: var(--muted);
+      font-size: 0.875rem;
+      line-height: 1.7;
+    }
+    .cv-meta a { color: var(--text); text-decoration: underline; text-decoration-color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+    .cv-meta a:hover { color: #e6edf3; }
+
+    .cv-summary {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section.cv-section h2 {
+      color: #e6edf3;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .cv-entry { margin-bottom: 1.4rem; }
+    .cv-entry:last-child { margin-bottom: 0; }
+    .cv-entry-title {
+      color: #e6edf3;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+    .cv-entry-meta {
+      color: var(--muted);
+      font-size: 0.825rem;
+      margin-bottom: 0.45rem;
+    }
+    .cv-entry-meta a { color: var(--link); text-decoration: none; }
+    .cv-entry-meta a:hover { text-decoration: underline; }
+    .cv-entry-body {
+      color: var(--text);
+      font-size: 0.875rem;
+      line-height: 1.75;
+    }
+    .cv-entry-body ul { margin: 0.5rem 0 0 1.1rem; padding: 0; }
+    .cv-entry-body li { margin-bottom: 0.25rem; }
+
+    .skills-row {
+      color: var(--text);
+      font-size: 0.875rem;
+      line-height: 1.85;
+      margin-bottom: 0.55rem;
+    }
+    .skills-row .label {
+      color: #e6edf3;
+      font-weight: 500;
+    }
+
+    .cv-foot {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    .cv-foot a { color: var(--link); text-decoration: none; }
+    .cv-foot a:hover { text-decoration: underline; }
+
+    /* Print: clean black-on-white for the PDF version */
+    @media print {
+      body { background: #fff; color: #111; padding: 0.5in 0.6in; display: block; }
+      main { max-width: 100%; gap: 1rem; }
+      a { color: #111; text-decoration: underline; }
+      h1, h2, .cv-entry-title, .skills-row .label { color: #111; }
+      .cv-meta, .cv-summary, .cv-entry-meta, .cv-foot { color: #555; }
+      .cv-header, .cv-summary, .cv-foot { border-color: #ccc; }
+      section.cv-section { page-break-inside: avoid; }
+      .cv-entry { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="cv-header">
+      <h1>Jake Joyner</h1>
+      <p class="cv-meta">
+        La Jolla, CA &middot;
+        <a href="mailto:jake@jakejoyner.com">jake@jakejoyner.com</a> &middot;
+        <a href="https://github.com/jakejjoyner">github.com/jakejjoyner</a> &middot;
+        <a href="https://ailedger.dev">ailedger.dev</a>
+      </p>
+    </header>
+
+    <p class="cv-summary">
+      Engineer and founder, building tamper-evident audit infrastructure for AI inference. Strongest in Rust, edge compute, cryptographic provenance, and EU AI Act compliance. Currently solo on AILedger; in early customer conversations.
+    </p>
+
+    <section class="cv-section">
+      <h2>Selected Work</h2>
+
+      <div class="cv-entry">
+        <div class="cv-entry-title">AILedger — Founder</div>
+        <div class="cv-entry-meta">2025–present &middot; <a href="https://ailedger.dev">ailedger.dev</a></div>
+        <div class="cv-entry-body">
+          Tamper-evident chain of custody for every AI inference an enterprise's product makes, designed for the EU AI Act Article 12 conformance question (Article 79 enforcement August 2, 2026).
+          <ul>
+            <li>Cloudflare Workers proxy with input/output SHA-256 hashing and RFC 8785 JCS canonicalization</li>
+            <li>Per-tenant audit chain with deterministic verification path</li>
+            <li>Customer discovery underway with EU-exposed enterprise AI teams</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-title">skillrt — Rust, published</div>
+        <div class="cv-entry-meta"><a href="https://crates.io/crates/skillrt">crates.io/crates/skillrt</a></div>
+        <div class="cv-entry-body">
+          Skill-runtime primitive for AI agents: portable skill-pack format, dynamic loading, dispatch.
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-title">matrixrt — Internal runtime</div>
+        <div class="cv-entry-meta">2026</div>
+        <div class="cv-entry-body">
+          Dynamic task→skill matching runtime. Coverage-based scoring with &epsilon;-greedy exploration; outcomes update per-skill priors over an append-only ledger. Designed for high-throughput operation.
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-title">Multi-silo collaboration infrastructure — Internal</div>
+        <div class="cv-entry-meta">2026</div>
+        <div class="cv-entry-body">
+          Cross-agent work isolation, audit logging, and signaling layer (Plaza / Border / Overseer pattern). Built on Python stdlib, tailscale, and systemd user units.
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Earlier Experience</h2>
+
+      <div class="cv-entry">
+        <div class="cv-entry-title">Transfer Research Experience (T-REX), UC San Diego</div>
+        <div class="cv-entry-meta">August 2025</div>
+        <div class="cv-entry-body">
+          Paired with faculty mentor; studied optimization techniques in modern machine learning. Presented research poster.
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-title">Restoration Technician, True West Motorworks</div>
+        <div class="cv-entry-meta">2025</div>
+        <div class="cv-entry-body">
+          Diagnostics, engine repair, and spot welding on neglected vehicles, primarily air-cooled VWs.
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Education</h2>
+
+      <div class="cv-entry">
+        <div class="cv-entry-title">University of California, San Diego</div>
+        <div class="cv-entry-meta">September 2025 – April 2026 (departed)</div>
+        <div class="cv-entry-body">
+          Mathematics / Computer Science &middot; 4.0 GPA &middot; Departed to focus full-time on AILedger.
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-title">Santa Monica College</div>
+        <div class="cv-entry-meta">February 2023 – June 2025</div>
+        <div class="cv-entry-body">
+          Computer Science &middot; 3.9 GPA &middot; Scholars Program &middot; Dean's List<br />
+          Coursework: abstract algebra, combinatorics, extremal graph theory.
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2>Technical Skills</h2>
+
+      <div class="skills-row">
+        <span class="label">Languages:</span> Rust &middot; TypeScript &middot; Python &middot; Go &middot; JavaScript &middot; C/C++ &middot; SQL &middot; Java
+      </div>
+      <div class="skills-row">
+        <span class="label">Infrastructure:</span> Cloudflare Workers &middot; edge compute &middot; audit-trail systems &middot; cryptographic provenance (SHA-256, RFC 8785 JCS) &middot; AI inference middleware &middot; PostgreSQL &middot; SQLite &middot; Docker
+      </div>
+      <div class="skills-row">
+        <span class="label">Frontend:</span> React &middot; HTML / CSS
+      </div>
+      <div class="skills-row">
+        <span class="label">Tools:</span> Linux &middot; Vim &middot; Git &middot; LaTeX &middot; OpenGL
+      </div>
+      <div class="skills-row">
+        <span class="label">Domain knowledge:</span> EU AI Act (Articles 12 &amp; 79) &middot; tamper-evident logging &middot; AI inference observability &middot; compliance infrastructure
+      </div>
+    </section>
+
+    <div class="cv-foot">
+      <a href="cv.pdf">Download PDF</a> &middot; <a href="/">Home</a>
+    </div>
+  </main>
+</body>
+</html>
