@@ -115,7 +115,15 @@ body.hero-page {
 .hero-banner {
   position: relative;
   width: 100%;
-  /* Native 4:1 aspect — no upscale, no crop. Preserves the panoramic feel. */
+  /* Native 4:1 aspect — no upscale beyond the source's own resolution.
+     Source is 1216×304; capping max-width at 1280px keeps the video
+     within ~5% of native pixel-for-pixel, so compression artifacts in
+     the H.264 source don't get amplified by browser upscaling. On wide
+     viewports the dark page background fills the sides — reads as
+     deliberate film-strip framing, not as a missing piece. */
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
   aspect-ratio: 1216 / 304;
   max-height: 38vh;             /* never let the banner dominate the page */
   overflow: hidden;
