@@ -4,21 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jake Joyner</title>
-  <meta name="description" content="Building skillrt — a Rust runtime and spec for executable markdown skills consumed by AI agents." />
+  <meta name="description" content="Engineer and founder building tamper-evident audit infrastructure for AI inference. Strongest in Rust, edge compute, cryptographic provenance, and EU AI Act compliance." />
 
   <!-- Open Graph -->
   <meta property="og:type" content="profile" />
   <meta property="og:title" content="Jake Joyner" />
-  <meta property="og:description" content="Building skillrt — a Rust runtime and spec for executable markdown skills consumed by AI agents." />
+  <meta property="og:description" content="Engineer and founder building tamper-evident audit infrastructure for AI inference." />
   <meta property="og:url" content="https://jakejoyner.com" />
+  <meta property="og:image" content="https://jakejoyner.com/assets/twilight-array.jpg" />
   <meta property="profile:first_name" content="Jake" />
   <meta property="profile:last_name" content="Joyner" />
   <meta property="profile:username" content="jakejjoyner" />
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Jake Joyner" />
-  <meta name="twitter:description" content="Building skillrt — a Rust runtime and spec for executable markdown skills consumed by AI agents." />
+  <meta name="twitter:description" content="Engineer and founder building tamper-evident audit infrastructure for AI inference." />
+  <meta name="twitter:image" content="https://jakejoyner.com/assets/twilight-array.jpg" />
 
   <!-- Discovery hints for agents -->
   <link rel="alternate" type="text/markdown" title="LLM-friendly summary" href="/llms.txt" />
@@ -36,7 +38,7 @@
         "https://github.com/jakejjoyner",
         "https://ailedger.dev"
       ],
-      "jobTitle": "Author of skillrt; founder of AILedger",
+      "jobTitle": "Engineer and founder; author of skillrt; founder of AILedger",
       "worksFor": {
         "@type": "Organization",
         "name": "AILedger",
@@ -44,10 +46,11 @@
       },
       "knowsAbout": [
         "AI inference logging",
+        "Cryptographic provenance",
         "EU AI Act Article 12 compliance",
-        "AI agent infrastructure",
-        "Markdown skills",
-        "Rust"
+        "Edge compute (Cloudflare Workers)",
+        "Rust",
+        "Markdown skill runtimes"
       ]
     }
   }
@@ -55,18 +58,41 @@
 
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <main>
+<body class="hero-page">
+  <!-- Cinematic background — autoplay muted loop, drops to poster on
+       low-power devices and on the iOS reduced-motion preference. -->
+  <div class="hero-bg" aria-hidden="true">
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster="/assets/twilight-array.jpg">
+      <source src="/assets/twilight-array.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-bg-vignette"></div>
+  </div>
+
+  <main class="hero">
     <header>
       <h1>Jake Joyner</h1>
-      <p class="subtitle">Building <a href="https://github.com/jakejjoyner/skillrt">skillrt</a> — a Rust runtime and spec for executable markdown skills consumed by AI agents.</p>
+      <p class="subtitle">
+        Engineer and founder. Building <a href="https://ailedger.dev">AILedger</a>, tamper-evident audit infrastructure for AI inference. Author of <a href="https://crates.io/crates/skillrt">skillrt</a>, a Rust runtime for executable markdown skills.
+      </p>
+      <p class="bio">
+        Strongest in Rust, edge compute, cryptographic provenance, and EU AI Act compliance. Twenty-one. Long-term thinker. Prefers building substrate over surface.
+      </p>
     </header>
-    <section class="links">
+
+    <nav class="links">
       <a href="/portfolio/">Projects</a>
       <a href="/blog/">Blog</a>
+      <a href="/cv/">Résumé</a>
       <a href="https://github.com/jakejjoyner" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="mailto:jake@jakejoyner.com">jake@jakejoyner.com</a>
-    </section>
+    </nav>
   </main>
 </body>
 </html>
