@@ -167,6 +167,27 @@ main.hero header {
   text-align: center;
 }
 
+/* Stardew-style portrait — small circular avatar above the H1. Sized
+   modestly so it sits as identity-anchor, not feature. Subtle ring +
+   soft shadow keeps it from feeling pasted-in over the dark page. */
+.hero-avatar {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+.hero-avatar img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 8px 24px -8px rgba(0, 0, 0, 0.5);
+  background: #0d1117;
+}
+
 main.hero h1 {
   font-size: 2rem;
   letter-spacing: -0.015em;
@@ -235,6 +256,7 @@ nav.links a:hover {
     padding: 2.5rem 1.25rem 3rem;
   }
   main.hero h1 { font-size: 1.65rem; }
+  .hero-avatar img { width: 80px; height: 80px; }
   main.hero .subtitle { font-size: 0.95rem; }
   main.hero .bio { font-size: 0.85rem; }
   nav.links { gap: 0.25rem; }
