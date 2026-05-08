@@ -99,79 +99,70 @@ h1 {
 }
 
 /* ── Hero page (root index) ──────────────────────────────────────────────
-   Cinematic twilight-array video as full-bleed background, content as
-   a frosted card on top. Falls back gracefully on reduced-motion or
-   when JS/video is blocked. */
+   Panoramic 4:1 twilight-array video as a banner across the top of the
+   page, sized to its native aspect (no upscaling). Content stack sits
+   below. Reduced-motion users see the still poster banner. */
 
 body.hero-page {
-  background: #050811;          /* deep night sky behind the video */
+  background: #050811;          /* deep night sky */
   align-items: stretch;
-  justify-content: stretch;
+  justify-content: flex-start;
   padding: 0;
-  position: relative;
-  overflow-x: hidden;
+  display: block;               /* override flex centering from body{} */
+  min-height: 100vh;
 }
 
-.hero-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
+.hero-banner {
+  position: relative;
+  width: 100%;
+  /* Native 4:1 aspect — no upscale, no crop. Preserves the panoramic feel. */
+  aspect-ratio: 1216 / 304;
+  max-height: 38vh;             /* never let the banner dominate the page */
   overflow: hidden;
+  background: #050811;
 }
 
 .hero-video {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
-  /* Slight cool-shift + softening so the type stays the focal point. */
-  filter: saturate(0.92) brightness(0.78);
-  transform: scale(1.03);       /* hide any edge artifacts during loop */
+  /* Slight cool-shift so the page type below stays the focal point. */
+  filter: saturate(0.95) brightness(0.85);
 }
 
-/* Top-and-bottom gradient vignette so subtitle + bio remain readable
-   over even the brightest mid-frames of the video. */
-.hero-bg-vignette {
+/* Soft fade at the bottom of the banner — visually attaches it to the
+   content below without a hard line. */
+.hero-banner-fade {
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at center, transparent 40%, rgba(5, 8, 17, 0.55) 100%),
-    linear-gradient(180deg, rgba(5, 8, 17, 0.45) 0%, rgba(5, 8, 17, 0.15) 30%, rgba(5, 8, 17, 0.15) 70%, rgba(5, 8, 17, 0.7) 100%);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 25%;
+  background: linear-gradient(180deg, transparent 0%, #050811 100%);
   pointer-events: none;
 }
 
 main.hero {
   position: relative;
-  z-index: 1;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 4rem 1.5rem;
+  padding: 3.5rem 1.5rem 5rem;
   gap: 2.25rem;
+  max-width: none;              /* override the body{} 600 cap */
 }
 
 main.hero header {
-  max-width: 640px;
+  max-width: 600px;
   width: 100%;
   text-align: center;
-  /* Very light frosted plate so the bio has structure without obscuring
-     the background. */
-  padding: 2.25rem 2rem;
-  background: rgba(13, 17, 23, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
-  backdrop-filter: blur(8px) saturate(1.1);
-  -webkit-backdrop-filter: blur(8px) saturate(1.1);
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
 }
 
 main.hero h1 {
   font-size: 2rem;
   letter-spacing: -0.015em;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.95rem;
   color: #f0f6fc;
 }
 
@@ -179,7 +170,7 @@ main.hero .subtitle {
   color: #c9d1d9;
   font-size: 0.95rem;
   line-height: 1.75;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
   max-width: 520px;
   margin-left: auto;
   margin-right: auto;
@@ -193,8 +184,7 @@ main.hero .bio {
   margin: 0 auto;
 }
 
-/* Hero nav — horizontal row of slash-separated links over the background.
-   No card; sits directly on the gradient vignette. */
+/* Hero nav — horizontal slash-separated links sitting on the dark page. */
 nav.links {
   display: flex;
   flex-direction: row;
@@ -230,12 +220,11 @@ nav.links a:hover {
 }
 
 @media (max-width: 600px) {
-  main.hero {
-    justify-content: flex-start;
-    padding: 4rem 1.25rem 3rem;
+  .hero-banner {
+    max-height: 30vh;
   }
-  main.hero header {
-    padding: 1.75rem 1.5rem;
+  main.hero {
+    padding: 2.5rem 1.25rem 3rem;
   }
   main.hero h1 { font-size: 1.65rem; }
   main.hero .subtitle { font-size: 0.95rem; }
@@ -244,10 +233,11 @@ nav.links a:hover {
   nav.links a { padding: 0.6rem 0.8rem; font-size: 0.95rem; }
 }
 
-/* Honor reduced-motion — pause video, keep poster visible. */
+/* Honor reduced-motion — hide the autoplay video, still poster shows
+   via the banner background. */
 @media (prefers-reduced-motion: reduce) {
   .hero-video { display: none; }
-  .hero-bg {
+  .hero-banner {
     background: url('/assets/twilight-array.jpg') center / cover no-repeat;
   }
 }

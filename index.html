@@ -59,9 +59,11 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="hero-page">
-  <!-- Cinematic background — autoplay muted loop, drops to poster on
-       low-power devices and on the iOS reduced-motion preference. -->
-  <div class="hero-bg" aria-hidden="true">
+  <!-- Cinematic banner — panoramic 4:1 video honored at native aspect.
+       Autoplays muted on capable browsers; a JS shim retries play() if
+       browser autoplay-policy initially blocks. Reduced-motion users see
+       the still poster instead. -->
+  <section class="hero-banner" aria-hidden="true">
     <video
       class="hero-video"
       autoplay
@@ -72,8 +74,8 @@
       poster="/assets/twilight-array.jpg">
       <source src="/assets/twilight-array.mp4" type="video/mp4" />
     </video>
-    <div class="hero-bg-vignette"></div>
-  </div>
+    <div class="hero-banner-fade"></div>
+  </section>
 
   <main class="hero">
     <header>
@@ -94,5 +96,26 @@
       <a href="mailto:jake@jakejoyner.com">jake@jakejoyner.com</a>
     </nav>
   </main>
+
+  <script>
+    // Some browsers block autoplay even for muted videos in certain power
+    // / data-saver modes. If the video element didn't begin playing within
+    // a beat after load, retry once. If still blocked, the poster stays
+    // visible (acceptable fallback) rather than letting the page look dead.
+    (function() {
+      var v = document.querySelector('.hero-video');
+      if (!v) return;
+      function tryPlay() {
+        var p = v.play();
+        if (p && typeof p.catch === 'function') p.catch(function(){ /* poster stays */ });
+      }
+      v.addEventListener('loadedmetadata', tryPlay, { once: true });
+      // Fallback: try again on any user interaction (satisfies autoplay
+      // gesture-required policies on Safari/iOS).
+      var nudge = function(){ tryPlay(); document.removeEventListener('click', nudge); document.removeEventListener('touchstart', nudge); };
+      document.addEventListener('click', nudge, { once: true });
+      document.addEventListener('touchstart', nudge, { once: true });
+    })();
+  </script>
 </body>
 </html>
