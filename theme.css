@@ -1,0 +1,116 @@
+/* Theme tokens — light by default, following the OS via prefers-color-scheme,
+   overridable with a manual choice applied as data-theme on <html> (set by the
+   anti-flash snippet in each page's <head> and toggled by theme.js).
+
+   Loaded before every page stylesheet, so the rest of the CSS just reads
+   var(--*). Pages may override individual token values after this file (the
+   blog does, for its Obsidian palette). */
+
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --text: #2a2f35;
+  --muted: #59636e;
+  --link: #0969da;
+  --link-hover: #0a3069;
+  --border: #d8dee4;
+  --heading: #11151a;
+  --card-bg: #f6f8fa;
+  --tag-bg: #eaeef2;
+  --tag-text: #2a2f35;
+  --code-bg: #eff1f3;
+  --hero-bg: #f6f8fa;
+  --hero-h1: #11151a;
+  --hero-avatar-bg: #ffffff;
+  --hero-avatar-ring: rgba(0, 0, 0, 0.12);
+  --hero-dot: rgba(40, 47, 53, 0.35);
+}
+
+/* Dark values. Plain CSS can't share a token group between selectors, so the
+   block is repeated for the two selectors that need it: the system-preference
+   path (only when the visitor hasn't made an explicit choice) and the explicit
+   data-theme="dark" override. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #0d1117;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+    --link: #58a6ff;
+    --link-hover: #e6edf3;
+    --border: #21262d;
+    --heading: #e6edf3;
+    --card-bg: #161b22;
+    --tag-bg: #1f242c;
+    --tag-text: #c9d1d9;
+    --code-bg: #161b22;
+    --hero-bg: #050811;
+    --hero-h1: #f0f6fc;
+    --hero-avatar-bg: #0d1117;
+    --hero-avatar-ring: rgba(255, 255, 255, 0.08);
+    --hero-dot: rgba(201, 209, 217, 0.35);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0d1117;
+  --text: #c9d1d9;
+  --muted: #8b949e;
+  --link: #58a6ff;
+  --link-hover: #e6edf3;
+  --border: #21262d;
+  --heading: #e6edf3;
+  --card-bg: #161b22;
+  --tag-bg: #1f242c;
+  --tag-text: #c9d1d9;
+  --code-bg: #161b22;
+  --hero-bg: #050811;
+  --hero-h1: #f0f6fc;
+  --hero-avatar-bg: #0d1117;
+  --hero-avatar-ring: rgba(255, 255, 255, 0.08);
+  --hero-dot: rgba(201, 209, 217, 0.35);
+}
+
+/* Explicit light override (beats system dark). It already inherits the :root
+   light values; this just pins color-scheme for native controls/scrollbars. */
+:root[data-theme="light"] { color-scheme: light; }
+
+/* Floating theme toggle — injected by theme.js on every page. */
+.theme-toggle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.82;
+  transition: color 0.15s, border-color 0.15s, opacity 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle:hover {
+  color: var(--heading);
+  border-color: var(--link);
+  opacity: 1;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+@media print {
+  .theme-toggle { display: none; }
+}

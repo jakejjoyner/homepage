@@ -12,6 +12,8 @@
   <meta property="og:description" content="Engineer and founder, building tamper-evident audit infrastructure for AI inference." />
   <meta property="og:url" content="https://jakejoyner.com/cv/" />
 
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="stylesheet" href="/theme.css" />
   <link rel="stylesheet" href="../style.css" />
   <style>
     /* CV-specific layout — extends homepage style.css */
@@ -35,7 +37,7 @@
     }
 
     section.cv-section h2 {
-      color: #e6edf3;
+      color: var(--heading);
       font-size: 0.95rem;
       font-weight: 500;
       letter-spacing: 0.04em;
@@ -46,7 +48,7 @@
     .cv-entry { margin-bottom: 1.4rem; }
     .cv-entry:last-child { margin-bottom: 0; }
     .cv-entry-title {
-      color: #e6edf3;
+      color: var(--heading);
       font-size: 0.95rem;
       font-weight: 500;
       margin-bottom: 0.15rem;
@@ -73,7 +75,7 @@
       margin-bottom: 0.55rem;
     }
     .skills-row .label {
-      color: #e6edf3;
+      color: var(--heading);
       font-weight: 500;
     }
 
@@ -99,6 +101,7 @@
       .cv-entry { page-break-inside: avoid; }
     }
   </style>
+  <script src="/theme.js" defer></script>
 </head>
 <body>
   <main>

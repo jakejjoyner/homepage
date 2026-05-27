@@ -1,12 +1,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-  --bg: #0d1117;
-  --text: #c9d1d9;
-  --muted: #8b949e;
-  --link: #58a6ff;
-  --border: #21262d;
-}
+/* Color tokens live in theme.css (loaded before this file) so the site can
+   follow the OS light/dark preference and a manual toggle. */
 
 html { font-size: 15px; -webkit-font-smoothing: antialiased; }
 
@@ -32,7 +27,7 @@ main {
 h1 {
   font-size: 1.6rem;
   font-weight: 500;
-  color: #e6edf3;
+  color: var(--heading);
   margin-bottom: 0.5rem;
   letter-spacing: -0.01em;
 }
@@ -55,8 +50,8 @@ h1 {
 }
 
 .subtitle a:hover {
-  color: #e6edf3;
-  text-decoration-color: #e6edf3;
+  color: var(--link-hover);
+  text-decoration-color: var(--link-hover);
 }
 
 .links {
@@ -80,7 +75,7 @@ h1 {
   transition: color 0.15s;
 }
 
-.links a:hover { color: #e6edf3; }
+.links a:hover { color: var(--link-hover); }
 .links a:hover::before { color: var(--link); }
 
 @media (max-width: 480px) {
@@ -104,7 +99,7 @@ h1 {
    below. Reduced-motion users see the still poster banner. */
 
 body.hero-page {
-  background: #050811;          /* deep night sky */
+  background: var(--hero-bg);
   align-items: stretch;
   justify-content: flex-start;
   padding: 0;
@@ -119,15 +114,15 @@ body.hero-page {
      Source is 1216×304; capping max-width at 1280px keeps the video
      within ~5% of native pixel-for-pixel, so compression artifacts in
      the H.264 source don't get amplified by browser upscaling. On wide
-     viewports the dark page background fills the sides — reads as
-     deliberate film-strip framing, not as a missing piece. */
+     viewports the page background fills the sides — reads as deliberate
+     film-strip framing, not as a missing piece. */
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
   aspect-ratio: 1216 / 304;
   max-height: 38vh;             /* never let the banner dominate the page */
   overflow: hidden;
-  background: #050811;
+  background: var(--hero-bg);
 }
 
 .hero-video {
@@ -147,7 +142,7 @@ body.hero-page {
   right: 0;
   bottom: 0;
   height: 25%;
-  background: linear-gradient(180deg, transparent 0%, #050811 100%);
+  background: linear-gradient(180deg, transparent 0%, var(--hero-bg) 100%);
   pointer-events: none;
 }
 
@@ -169,7 +164,7 @@ main.hero header {
 
 /* Stardew-style portrait — small circular avatar above the H1. Sized
    modestly so it sits as identity-anchor, not feature. Subtle ring +
-   soft shadow keeps it from feeling pasted-in over the dark page. */
+   soft shadow keeps it from feeling pasted-in over the page. */
 .hero-avatar {
   display: inline-block;
   margin-bottom: 1.25rem;
@@ -181,22 +176,22 @@ main.hero header {
   border-radius: 50%;
   display: block;
   object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--hero-avatar-ring);
   box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.4),
     0 8px 24px -8px rgba(0, 0, 0, 0.5);
-  background: #0d1117;
+  background: var(--hero-avatar-bg);
 }
 
 main.hero h1 {
   font-size: 2rem;
   letter-spacing: -0.015em;
   margin-bottom: 0.95rem;
-  color: #f0f6fc;
+  color: var(--hero-h1);
 }
 
 main.hero .subtitle {
-  color: #c9d1d9;
+  color: var(--text);
   font-size: 0.95rem;
   line-height: 1.75;
   margin-bottom: 1.1rem;
@@ -206,14 +201,14 @@ main.hero .subtitle {
 }
 
 main.hero .bio {
-  color: #8b949e;
+  color: var(--muted);
   font-size: 0.875rem;
   line-height: 1.75;
   max-width: 520px;
   margin: 0 auto;
 }
 
-/* Hero nav — horizontal slash-separated links sitting on the dark page. */
+/* Hero nav — horizontal slash-separated links sitting on the page. */
 nav.links {
   display: flex;
   flex-direction: row;
@@ -225,7 +220,7 @@ nav.links {
 }
 
 nav.links a {
-  color: #c9d1d9;
+  color: var(--text);
   text-decoration: none;
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
@@ -238,14 +233,14 @@ nav.links a::before { content: none; }
 
 nav.links a + a::before {
   content: "·";
-  color: rgba(201, 209, 217, 0.35);
+  color: var(--hero-dot);
   position: absolute;
   left: -3px;
   pointer-events: none;
 }
 
 nav.links a:hover {
-  color: #f0f6fc;
+  color: var(--hero-h1);
 }
 
 @media (max-width: 600px) {

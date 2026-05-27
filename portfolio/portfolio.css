@@ -1,15 +1,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-  --bg: #0d1117;
-  --text: #c9d1d9;
-  --muted: #8b949e;
-  --link: #58a6ff;
-  --border: #21262d;
-  --card-bg: #161b22;
-  --tag-bg: #1f242c;
-  --tag-text: #c9d1d9;
-}
+/* Color tokens (incl. --card-bg / --tag-bg / --tag-text) live in theme.css,
+   loaded before this file, so the projects page follows the light/dark theme. */
 
 html { font-size: 15px; -webkit-font-smoothing: antialiased; }
 
@@ -35,7 +27,7 @@ main {
 header h1 {
   font-size: 1.6rem;
   font-weight: 500;
-  color: #e6edf3;
+  color: var(--heading);
   margin-bottom: 0.5rem;
 }
 
@@ -72,7 +64,7 @@ header h1 {
 .project-title {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #e6edf3;
+  color: var(--heading);
 }
 
 .project-status {
@@ -133,7 +125,7 @@ header h1 {
 }
 
 .project-link:hover {
-  color: #e6edf3;
+  color: var(--heading);
 }
 
 .project-meta {
