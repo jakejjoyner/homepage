@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://jakejoyner.com/</loc><lastmod>2026-04-18</lastmod><priority>1.0</priority></url>
   <url><loc>https://jakejoyner.com/portfolio/</loc><lastmod>2026-04-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://jakejoyner.com/blog/</loc><lastmod>2026-05-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://jakejoyner.com/blog/ai-governance-accounting-mistake/</loc><lastmod>2026-05-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://jakejoyner.com/blog/towers/</loc><lastmod>2026-05-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://jakejoyner.com/llms.txt</loc><lastmod>2026-04-18</lastmod><priority>0.7</priority></url>
   <url><loc>https://jakejoyner.com/portfolio/llms.txt</loc><lastmod>2026-04-18</lastmod><priority>0.6</priority></url>
 </urlset>
