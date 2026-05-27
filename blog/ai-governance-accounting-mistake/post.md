@@ -93,4 +93,4 @@ If you read this and felt something at the end, that feeling is correct. Act on 
 
 *Jake Joyner is the founder of AILedger, PBC. Contact: [help@ailedger.dev](mailto:help@ailedger.dev). The Charter referenced above is published at [ailedger.dev/charter](https://ailedger.dev/charter). The open-source Detection layer is at [github.com/ailedger-dev/ailedger-detection](https://github.com/ailedger-dev/ailedger-detection).*
 
-*Evidence for the specific claims about Credo AI and Holistic AI is documented separately: [link]*
+*This essay is opinion and commentary on a matter of public concern. Factual claims about named companies are sourced to those companies' own public marketing and press releases, documented separately in [a sourced vendor assessment](vendor-assessment/). Good-faith corrections of any factual error are welcomed at [help@ailedger.dev](mailto:help@ailedger.dev).*
