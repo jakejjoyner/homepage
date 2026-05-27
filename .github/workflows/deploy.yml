@@ -6,23 +6,59 @@ name: Deploy to Cloudflare Workers
 # (repo-only files are excluded via .assetsignore). A broken deploy shows up as
 # a red check here rather than failing silently.
 #
+# Pull requests run `wrangler deploy --dry-run` (the `validate` job) so config
+# breakage is caught as a red PR check *before* merge, not as a post-merge
+# failure. Dry-run needs no credentials. Make `validate` a required status check
+# on main (Settings → Branches) to enforce this.
+#
 # Requires the CLOUDFLARE_API_TOKEN repo secret (token with Workers Scripts:Edit
-# on the account). CLOUDFLARE_ACCOUNT_ID is already set. See .github/DEPLOY.md.
+# on the account) for the real deploy. CLOUDFLARE_ACCOUNT_ID is already set.
+# Optional: set PUSHOVER_TOKEN + PUSHOVER_USER secrets to get pinged when a
+# deploy to main fails (the notify step stays dormant until both exist).
+# See .github/DEPLOY.md.
 
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch: {}        # lets you trigger a deploy by hand from the Actions tab
 
 concurrency:
-  group: workers-deploy        # never run two deploys at once
+  # Per-ref so a PR validation never cancels an in-flight main deploy, while
+  # still serializing repeated pushes to the same ref.
+  group: workers-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  # Pre-merge guard: build + validate the Worker without uploading. `--dry-run`
+  # contacts no API and needs no token, so it runs on PRs and turns config
+  # breakage (e.g. the wrangler-version / "Missing entry-point" bug) into a red
+  # PR check instead of a silent post-merge deploy failure.
+  validate:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Worker config (dry-run)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          wranglerVersion: '4.95.0'
+          command: deploy --dry-run
+
+  deploy:
+    needs: validate
+    if: github.event_name != 'pull_request'   # PRs only validate; real deploy on push/dispatch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      # Mapped here (not in `if:`) because the secrets context isn't available
+      # in step conditions; empty when unset, which keeps notify dormant.
+      PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
+      PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
     steps:
       - uses: actions/checkout@v4
 
@@ -36,3 +72,13 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
+
+      - name: Notify on failure (Pushover)
+        if: ${{ failure() && env.PUSHOVER_TOKEN != '' && env.PUSHOVER_USER != '' }}
+        run: |
+          curl -s --max-time 20 \
+            --form-string "token=$PUSHOVER_TOKEN" \
+            --form-string "user=$PUSHOVER_USER" \
+            --form-string "title=homepage deploy failed" \
+            --form-string "message=wrangler deploy failed on main (run ${{ github.run_id }}): https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            https://api.pushover.net/1/messages.json
