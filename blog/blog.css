@@ -1,182 +1,266 @@
-/* Blog layout — extends style.css with prose-friendly typography. */
+/* Blog — Obsidian-style reading view.
+   Self-hosted Inter, a comfortable measure and line-height, and an Obsidian
+   dark/light palette. This file is loaded only on /blog/ pages (after
+   theme.css and style.css), so the token overrides below re-skin the blog
+   without touching the rest of the site. */
+
+/* ── Inter (self-hosted from /fonts) ─────────────────────────────────────── */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Inter_18pt-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Inter_18pt-Italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Inter_18pt-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Inter_18pt-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Inter_18pt-SemiBoldItalic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Inter_18pt-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/Inter_18pt-ExtraBold.woff2') format('woff2');
+}
+
+/* ── Obsidian palette (overrides theme.css tokens, blog pages only) ───────── */
+:root {
+  --bg: #ffffff;
+  --text: #2e3338;
+  --muted: #6b7178;
+  --link: #7c5cff;
+  --link-hover: #5b3fd6;
+  --border: #e4e4e6;
+  --heading: #1a1a1a;
+  --card-bg: #f4f4f5;
+  --code-bg: #f2f2f3;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #1e1e1e;
+    --text: #dadada;
+    --muted: #9aa0a6;
+    --link: #a78bfa;
+    --link-hover: #c4b5fd;
+    --border: #363636;
+    --heading: #e8e8ea;
+    --card-bg: #2a2a2a;
+    --code-bg: #2a2a2a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1e1e1e;
+  --text: #dadada;
+  --muted: #9aa0a6;
+  --link: #a78bfa;
+  --link-hover: #c4b5fd;
+  --border: #363636;
+  --heading: #e8e8ea;
+  --card-bg: #2a2a2a;
+  --code-bg: #2a2a2a;
+}
+
+/* ── Reading layout ───────────────────────────────────────────────────────
+   Inter everywhere; content anchored to the top (overriding the vertically
+   centered flex body from style.css); a comfortable reading measure. */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  align-items: flex-start;
+  padding: 3.5rem 1.5rem 5rem;
+}
 
 main {
-  max-width: 680px;
+  max-width: 720px;
+  gap: 0;
 }
 
 .blog-header {
   border-bottom: 1px solid var(--border);
-  padding-bottom: 1.25rem;
-  margin-bottom: 1.5rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 2.1rem;
 }
 
 .blog-header h1 {
-  font-size: 1.4rem;
-  margin-bottom: 0.4rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--heading);
+  margin-bottom: 0.5rem;
 }
 
 .blog-header .breadcrumb {
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 
-.blog-header .breadcrumb a {
-  color: var(--muted);
-  text-decoration: none;
-}
+.blog-header .breadcrumb a { color: var(--muted); text-decoration: none; }
+.blog-header .breadcrumb a:hover { color: var(--text); }
 
-.blog-header .breadcrumb a:hover {
-  color: var(--text);
-}
-
+/* ── Post list (blog index) ──────────────────────────────────────────────── */
 .post-list {
   list-style: none;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.6rem;
 }
 
 .post-list li {
   border-bottom: 1px solid var(--border);
-  padding-bottom: 1.25rem;
+  padding-bottom: 1.6rem;
 }
 
-.post-list li:last-child {
-  border-bottom: none;
-}
+.post-list li:last-child { border-bottom: none; }
 
 .post-list a {
-  color: #e6edf3;
+  color: var(--heading);
   text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
   display: block;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.35rem;
 }
 
-.post-list a:hover {
-  color: var(--link);
-}
+.post-list a:hover { color: var(--link); }
 
 .post-list .meta {
   color: var(--muted);
-  font-size: 0.8rem;
-  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.45rem;
 }
 
 .post-list .summary {
-  color: var(--muted);
-  font-size: 0.875rem;
+  color: var(--text);
+  font-size: 1rem;
   line-height: 1.7;
 }
 
-/* Post body — narrow column for readability. Slightly larger line-height
-   than the rest of the site since prose reads slower than headers. */
+/* ── Post body — the reading column ──────────────────────────────────────── */
 .post-body {
   color: var(--text);
-  font-size: 0.95rem;
-  line-height: 1.85;
+  font-size: 1.12rem;
+  line-height: 1.75;
 }
 
-.post-body p {
-  margin-bottom: 1.1rem;
+.post-body p { margin: 0 0 1.25rem; }
+.post-body p:last-child { margin-bottom: 0; }
+
+.post-body em { font-style: italic; color: var(--text); }
+.post-body strong { font-weight: 700; color: var(--heading); }
+
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  font-family: 'Inter', sans-serif;
+  color: var(--heading);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
 }
 
-.post-body p:last-child {
-  margin-bottom: 0;
-}
+.post-body h2 { font-size: 1.55rem; font-weight: 700; margin: 2.4rem 0 0.9rem; }
+.post-body h3 { font-size: 1.25rem; font-weight: 700; margin: 2rem 0 0.7rem; }
+.post-body h4 { font-size: 1.1rem; font-weight: 600; margin: 1.7rem 0 0.6rem; }
 
-.post-body em {
-  color: #c9d1d9;
-}
-
-/* Rendered Markdown elements (see md.js). Headings are offset by one level in
-   the post body, so "# Foo" becomes <h2> and the page title keeps the <h1>. */
-.post-body h2 {
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: #e6edf3;
-  letter-spacing: -0.01em;
-  margin: 2.1rem 0 0.85rem;
-}
-
-.post-body h2:first-child {
-  margin-top: 0;
-}
-
-.post-body h3 {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #e6edf3;
-  margin: 1.6rem 0 0.7rem;
-}
-
-.post-body strong {
-  color: #e6edf3;
-  font-weight: 600;
-}
+.post-body h2:first-child,
+.post-body h3:first-child,
+.post-body h4:first-child { margin-top: 0; }
 
 .post-body a {
   color: var(--link);
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
-  transition: color 0.15s;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, var(--link) 50%, transparent);
+  transition: color 0.15s, text-decoration-color 0.15s;
 }
 
 .post-body a:hover {
-  color: #e6edf3;
+  color: var(--link-hover);
+  text-decoration-color: var(--link-hover);
 }
 
 .post-body ul,
 .post-body ol {
-  margin: 0 0 1.1rem 1.4rem;
+  margin: 0 0 1.25rem 1.5rem;
   padding: 0;
 }
 
-.post-body li {
-  margin-bottom: 0.5rem;
-}
-
-.post-body li:last-child {
-  margin-bottom: 0;
-}
+.post-body li { margin-bottom: 0.5rem; }
+.post-body li:last-child { margin-bottom: 0; }
 
 .post-body code {
-  font-size: 0.85em;
-  background: #161b22;
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.88em;
+  background: var(--code-bg);
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.1em 0.35em;
+  border-radius: 5px;
+  padding: 0.12em 0.4em;
 }
 
 .post-body blockquote {
-  border-left: 2px solid var(--border);
-  padding-left: 1rem;
-  margin: 0 0 1.1rem;
+  border-left: 3px solid var(--border);
+  padding: 0.1rem 0 0.1rem 1.1rem;
+  margin: 0 0 1.25rem;
   color: var(--muted);
 }
 
 .post-body hr {
   border: none;
   border-top: 1px solid var(--border);
-  margin: 2rem 0;
+  margin: 2.5rem 0;
 }
 
+/* ── Post footer meta ────────────────────────────────────────────────────── */
 .post-meta {
   color: var(--muted);
-  font-size: 0.78rem;
-  margin-top: 2rem;
-  padding-top: 1rem;
+  font-size: 0.875rem;
+  margin-top: 3rem;
+  padding-top: 1.25rem;
   border-top: 1px solid var(--border);
 }
 
-.post-meta a {
-  color: var(--muted);
-  text-decoration: none;
-}
+.post-meta a { color: var(--muted); text-decoration: none; }
+.post-meta a:hover { color: var(--text); }
 
-.post-meta a:hover {
-  color: var(--text);
+@media (max-width: 600px) {
+  body { padding: 2.25rem 1.25rem 3rem; }
+  .blog-header h1 { font-size: 1.7rem; }
+  .post-body { font-size: 1.08rem; }
+  .post-body h2 { font-size: 1.45rem; }
+  .post-body h3 { font-size: 1.2rem; }
 }
