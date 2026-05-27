@@ -1,9 +1,13 @@
-name: Deploy to Cloudflare Pages
+name: Deploy to Cloudflare Workers
 
-# Static site — no build step. On every push to main we stage the site files
-# (dropping repo-only files like .git and the legacy nginx.conf) and ship them
-# to Cloudflare Pages with wrangler. Failures show up as a red check here in
-# GitHub, so a broken deploy is visible rather than silent.
+# Static site (no build step) served by Cloudflare Workers static assets — see
+# wrangler.jsonc (name: homepage, assets.directory: "."). On every push to main
+# we run `wrangler deploy`, which uploads the repo as the Worker's assets
+# (repo-only files are excluded via .assetsignore). A broken deploy shows up as
+# a red check here rather than failing silently.
+#
+# Requires the CLOUDFLARE_API_TOKEN repo secret (token with Workers Scripts:Edit
+# on the account). CLOUDFLARE_ACCOUNT_ID is already set. See .github/DEPLOY.md.
 
 on:
   push:
@@ -11,7 +15,7 @@ on:
   workflow_dispatch: {}        # lets you trigger a deploy by hand from the Actions tab
 
 concurrency:
-  group: pages-deploy          # never run two deploys at once
+  group: workers-deploy        # never run two deploys at once
   cancel-in-progress: true
 
 jobs:
@@ -22,20 +26,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Stage site files
-        run: |
-          mkdir dist
-          rsync -a \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='.claude' \
-            --exclude='dist' \
-            --exclude='nginx.conf' \
-            ./ dist/
-
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=jakejoyner --branch=main
+          command: deploy

@@ -1,0 +1,10 @@
+# Files not served as Worker static assets (wrangler deploy reads this).
+.git
+.github
+.claude
+.wrangler
+node_modules
+nginx.conf
+wrangler.jsonc
+.gitignore
+.assetsignore
