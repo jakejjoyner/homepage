@@ -91,6 +91,79 @@ main {
   color: #c9d1d9;
 }
 
+/* Rendered Markdown elements (see md.js). Headings are offset by one level in
+   the post body, so "# Foo" becomes <h2> and the page title keeps the <h1>. */
+.post-body h2 {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #e6edf3;
+  letter-spacing: -0.01em;
+  margin: 2.1rem 0 0.85rem;
+}
+
+.post-body h2:first-child {
+  margin-top: 0;
+}
+
+.post-body h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #e6edf3;
+  margin: 1.6rem 0 0.7rem;
+}
+
+.post-body strong {
+  color: #e6edf3;
+  font-weight: 600;
+}
+
+.post-body a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.15s;
+}
+
+.post-body a:hover {
+  color: #e6edf3;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.1rem 1.4rem;
+  padding: 0;
+}
+
+.post-body li {
+  margin-bottom: 0.5rem;
+}
+
+.post-body li:last-child {
+  margin-bottom: 0;
+}
+
+.post-body code {
+  font-size: 0.85em;
+  background: #161b22;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+.post-body blockquote {
+  border-left: 2px solid var(--border);
+  padding-left: 1rem;
+  margin: 0 0 1.1rem;
+  color: var(--muted);
+}
+
+.post-body hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
 .post-meta {
   color: var(--muted);
   font-size: 0.78rem;
