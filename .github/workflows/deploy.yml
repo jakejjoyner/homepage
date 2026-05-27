@@ -1,0 +1,41 @@
+name: Deploy to Cloudflare Pages
+
+# Static site — no build step. On every push to main we stage the site files
+# (dropping repo-only files like .git and the legacy nginx.conf) and ship them
+# to Cloudflare Pages with wrangler. Failures show up as a red check here in
+# GitHub, so a broken deploy is visible rather than silent.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}        # lets you trigger a deploy by hand from the Actions tab
+
+concurrency:
+  group: pages-deploy          # never run two deploys at once
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stage site files
+        run: |
+          mkdir dist
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.claude' \
+            --exclude='dist' \
+            --exclude='nginx.conf' \
+            ./ dist/
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=jakejoyner --branch=main
