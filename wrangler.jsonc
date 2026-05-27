@@ -2,6 +2,10 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "homepage",
   "compatibility_date": "2026-05-27",
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "jakejoyner.com/*", "zone_name": "jakejoyner.com" }
+  ],
   "observability": {
     "enabled": true
   },
