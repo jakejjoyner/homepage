@@ -1,84 +1,83 @@
-name: Deploy to Cloudflare Workers
+name: Deploy (Cloudflare Pages)
 
-# Static site (no build step) served by Cloudflare Workers static assets — see
-# wrangler.jsonc (name: homepage, assets.directory: "."). On every push to main
-# we run `wrangler deploy`, which uploads the repo as the Worker's assets
-# (repo-only files are excluded via .assetsignore). A broken deploy shows up as
-# a red check here rather than failing silently.
+# jakejoyner.com is a static site (no build step) deployed to a Cloudflare
+# PAGES project named `homepage`. We stage a clean copy of the repo (dropping
+# repo-only files) and ship it with wrangler:
+#   pull request  -> Pages PREVIEW deploy (preview URL shown in the run log)
+#   push to main  -> Pages PRODUCTION deploy (serves jakejoyner.com once the
+#                    custom domain is attached to the Pages project)
 #
-# Pull requests run `wrangler deploy --dry-run` (the `validate` job) so config
-# breakage is caught as a red PR check *before* merge, not as a post-merge
-# failure. Dry-run needs no credentials. Make `validate` a required status check
-# on main (Settings → Branches) to enforce this.
-#
-# Requires the CLOUDFLARE_API_TOKEN repo secret (token with Workers Scripts:Edit
-# on the account) for the real deploy. CLOUDFLARE_ACCOUNT_ID is already set.
-# Optional: set PUSHOVER_TOKEN + PUSHOVER_USER secrets to get pinged when a
-# deploy to main fails (the notify step stays dormant until both exist).
-# See .github/DEPLOY.md.
+# Requires repo secrets:
+#   CLOUDFLARE_API_TOKEN   token with "Cloudflare Pages: Edit" on the account
+#   CLOUDFLARE_ACCOUNT_ID  already set
+# The Pages project's Git integration must stay DISCONNECTED so it never races
+# this workflow. Optional PUSHOVER_TOKEN/USER secrets -> ping when main fails.
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-  workflow_dispatch: {}        # lets you trigger a deploy by hand from the Actions tab
+  workflow_dispatch: {}
 
 concurrency:
-  # Per-ref so a PR validation never cancels an in-flight main deploy, while
-  # still serializing repeated pushes to the same ref.
-  group: workers-${{ github.ref }}
-  cancel-in-progress: true
+  # Per-ref: a PR preview never cancels an in-flight main deploy; repeated
+  # pushes to the same ref serialize. PR runs may cancel their own older runs.
+  group: pages-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
 
 jobs:
-  # Pre-merge guard: build + validate the Worker without uploading. `--dry-run`
-  # contacts no API and needs no token, so it runs on PRs and turns config
-  # breakage (e.g. the wrangler-version / "Missing entry-point" bug) into a red
-  # PR check instead of a silent post-merge deploy failure.
-  validate:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@v5
-
-      - name: Validate Worker config (dry-run)
-        uses: cloudflare/wrangler-action@v4
-        with:
-          wranglerVersion: '4.95.0'
-          command: deploy --dry-run
-
   deploy:
-    needs: validate
-    if: github.event_name != 'pull_request'   # PRs only validate; real deploy on push/dispatch
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     env:
       # Mapped here (not in `if:`) because the secrets context isn't available
-      # in step conditions; empty when unset, which keeps notify dormant.
+      # in step conditions; empty when unset keeps the notify step dormant.
       PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
       PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
 
-      - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v4
+      # Static site: no build. Stage a clean copy so repo-only files (.git,
+      # .claude worktrees, the old Workers config) are never published.
+      - name: Stage site files
+        run: |
+          mkdir -p dist
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.claude' \
+            --exclude='.wrangler' \
+            --exclude='node_modules' \
+            --exclude='dist' \
+            --exclude='nginx.conf' \
+            --exclude='wrangler.jsonc' \
+            --exclude='.assetsignore' \
+            --exclude='.gitignore' \
+            ./ dist/
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
         with:
-          # Pin wrangler v4: the action's default (3.90.0) rejects this
-          # assets-only Worker (no `main` entry-point) with "Missing
-          # entry-point". Static Assets without a script need wrangler v4.
+          # wrangler-action defaults to v3.90; pin v4 to match the rest of the
+          # toolchain and avoid envs/Pages quirks.
           wranglerVersion: '4.95.0'
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
+          # PR -> preview (branch alias = the PR's head branch); main -> production.
+          command: >-
+            pages deploy dist
+            --project-name=homepage
+            --branch=${{ github.event_name == 'pull_request' && github.head_ref || 'main' }}
 
       - name: Notify on failure (Pushover)
-        if: ${{ failure() && env.PUSHOVER_TOKEN != '' && env.PUSHOVER_USER != '' }}
+        if: ${{ failure() && github.event_name != 'pull_request' && env.PUSHOVER_TOKEN != '' && env.PUSHOVER_USER != '' }}
         run: |
           curl -s --max-time 20 \
             --form-string "token=$PUSHOVER_TOKEN" \
             --form-string "user=$PUSHOVER_USER" \
             --form-string "title=homepage deploy failed" \
-            --form-string "message=wrangler deploy failed on main (run ${{ github.run_id }}): https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --form-string "message=Pages deploy failed on main (run ${{ github.run_id }}): https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
             https://api.pushover.net/1/messages.json
