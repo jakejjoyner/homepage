@@ -87,7 +87,7 @@ For any of the above, reach me at [help@ailedger.dev](mailto:help@ailedger.dev).
 
 This is not ok. We can do better than this. The danger is not that the AI governance category will collapse like Arthur Andersen did. The danger is that it will succeed, and the people it claims to serve will be harmed anyway.
 
-If you read this and felt something at the end, that feeling is correct. Act on it. If you want to help build it, I am hiring. Early equity. Serious inquiries only: [jobs@ailedger.dev](mailto:jobs@ailedger.dev).
+If you read this and felt something at the end, that feeling is correct. Act on it. If you want to help build it, I am hiring. Early equity. Serious inquiries only: [careers@ailedger.dev](mailto:careers@ailedger.dev).
 
 ---
 
