@@ -29,7 +29,7 @@
         },
         {
           "label": "GitHub",
-          "href": "https://github.com/jakejjoyner/ailedger"
+          "href": "https://github.com/ailedger-dev/ailedger"
         }
       ],
       "shipped": "2026-04",
@@ -49,7 +49,7 @@
       "links": [
         {
           "label": "GitHub",
-          "href": "https://github.com/jakejjoyner/skillrt"
+          "href": "https://github.com/joyner-ventures/skillrt"
         },
         {
           "label": "crates.io",
@@ -57,7 +57,7 @@
         },
         {
           "label": "Spec",
-          "href": "https://github.com/jakejjoyner/skillrt/blob/main/spec/SKILL-SPEC.md"
+          "href": "https://github.com/joyner-ventures/skillrt/blob/main/spec/SKILL-SPEC.md"
         }
       ],
       "shipped": "2026-04",
