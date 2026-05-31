@@ -37,6 +37,7 @@ PAGE_TPL = """<!DOCTYPE html>
   <link rel="stylesheet" href="portfolio.css" />
   <script src="/theme.js" defer></script>
   <style>
+    .page-note {{ color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; }}
     .chapters {{ margin-top: 2.5rem; }}
     .chapters h2 {{ font-size: 1.1rem; font-weight: 600; color: var(--heading); margin-bottom: 0.3rem; }}
     .chapters .chapters-sub {{ color: var(--muted); font-size: 0.85rem; margin-bottom: 0.8rem; }}
@@ -51,6 +52,7 @@ PAGE_TPL = """<!DOCTYPE html>
     <header>
       <h1>{title}</h1>
       <p class="subtitle">{subtitle}</p>
+      <p class="page-note">Mostly a record for myself. It's public in case anyone's genuinely interested, not to brag.</p>
     </header>
     <section class="projects">
 {cards}
