@@ -77,7 +77,7 @@ PAGE_TPL = """<!DOCTYPE html>
 
 CARD_TPL = """      <article class="project" data-status="{status}">
         <div class="project-head">
-          <h2 class="project-title">{title}</h2>
+          <h2 class="project-title">{title_html}</h2>
           <span class="project-status" style="--status-color: {status_color};">{status}</span>
         </div>
         <p class="project-tagline">{tagline}</p>
@@ -96,12 +96,20 @@ def render_card(p: dict) -> str:
     stack_tags = "".join(
         f'<span class="stack-tag">{html.escape(t)}</span>' for t in stack
     )
+    project_links = p.get("links") or []
     links = "".join(
         f'<a class="project-link" href="{html.escape(l["href"])}" target="_blank" rel="noopener noreferrer">{html.escape(l["label"])}</a>'
-        for l in (p.get("links") or [])
+        for l in project_links
+    )
+    title_raw = html.escape(p.get("title", "(untitled)"))
+    primary = project_links[0]["href"] if project_links else None
+    title_html = (
+        f'<a class="project-title-link" href="{html.escape(primary)}" target="_blank" rel="noopener noreferrer">{title_raw}</a>'
+        if primary
+        else title_raw
     )
     return CARD_TPL.format(
-        title=html.escape(p.get("title", "(untitled)")),
+        title_html=title_html,
         status=html.escape(status),
         status_color=status_color,
         tagline=html.escape(p.get("tagline", "")),

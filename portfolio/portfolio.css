@@ -67,6 +67,17 @@ header h1 {
   color: var(--heading);
 }
 
+.project-title-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.project-title-link:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+
 .project-status {
   font-size: 0.7rem;
   text-transform: uppercase;
