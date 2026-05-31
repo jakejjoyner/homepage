@@ -11,9 +11,9 @@ One spec for executable markdown skills, one reference runtime in Rust, two cont
 **Stack:** Rust, JSON Schema, Markdown
 
 **Links:**
-- GitHub: https://github.com/jakejjoyner/skillrt
+- GitHub: https://github.com/jakejjoyner/skillrt-spec
 - crates.io: https://crates.io/crates/skillrt
-- Spec: https://github.com/jakejjoyner/skillrt/blob/main/spec/SKILL-SPEC.md
+- Spec: https://github.com/jakejjoyner/skillrt-spec/blob/main/spec/SKILL-SPEC.md
 
 _shipped 2026-04 · updated 2026-04_
 
