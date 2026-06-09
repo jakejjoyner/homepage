@@ -43,7 +43,7 @@ PAGE_TPL = """<!DOCTYPE html>
     .chapters .chapters-sub {{ color: var(--muted); font-size: 0.85rem; margin-bottom: 0.8rem; }}
     .chapters ul {{ list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }}
     .chapters li {{ color: var(--muted); font-size: 0.9rem; margin-bottom: 0.4rem; }}
-    .chapters .chapter-meta {{ display: block; color: var(--muted); font-size: 0.78rem; margin-top: 0.15rem; }}
+    .chapters .chapter-meta {{ display: block; color: var(--muted); font-size: 0.7rem; font-style: italic; margin-top: 0.15rem; }}
     .chapters a {{ color: var(--link); text-decoration: none; font-weight: 600; }}
     .chapters a:hover {{ color: var(--heading); }}
   </style>
@@ -53,7 +53,6 @@ PAGE_TPL = """<!DOCTYPE html>
     <header>
       <h1>{title}</h1>
       <p class="subtitle">{subtitle}</p>
-      <p class="page-note">Mostly a record for myself. It's public in case anyone's genuinely interested, not to brag.</p>
     </header>
     <section class="projects">
 {cards}
