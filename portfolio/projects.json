@@ -33,8 +33,8 @@
         }
       ],
       "shipped": "2026-04",
-      "updated": "2026-04",
-      "description": "A drop-in Cloudflare Workers proxy that sits between an AI app and its provider (OpenAI, Anthropic, Gemini). Every inference becomes an immutable, hash-chained audit record. Raw prompts and outputs are never stored \u2014 only SHA-256 fingerprints \u2014 so it's GDPR-clean by design. Compliance report exports to PDF in one click."
+      "updated": "2026-05",
+      "description": "A drop-in Cloudflare Workers proxy that sits between an AI app and its provider (OpenAI, Anthropic, Gemini). Every inference becomes an immutable, hash-chained audit record. Raw prompts and outputs are never stored \u2014 only SHA-256 fingerprints \u2014 so it's GDPR-clean by design. Tamper-evident chain shipped to prod 2026-04 (verify_chain SQL function lets any auditor independently reproduce the chain with standard SHA-256). Durable-buffer audit-write hardening shipped 2026-05: audit records are durably committed to a Cloudflare KV write-buffer before the response returns, with a scheduled drain to Postgres \u2014 surviving database outage and worker crash mid-flight. Compliance report exports to PDF in one click."
     },
     {
       "id": "skillrt",

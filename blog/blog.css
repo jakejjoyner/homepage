@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Blog — Obsidian-style reading view.
    Self-hosted Inter, a comfortable measure and line-height, and an Obsidian
    dark/light palette. This file is loaded only on /blog/ pages (after
@@ -55,10 +56,17 @@ body {
 main {
   max-width: 720px;
   gap: 0;
+=======
+/* Blog layout — extends style.css with prose-friendly typography. */
+
+main {
+  max-width: 680px;
+>>>>>>> 37cc2e0 (blog posts)
 }
 
 .blog-header {
   border-bottom: 1px solid var(--border);
+<<<<<<< HEAD
   padding-bottom: 1.1rem;
   margin-bottom: 2.1rem;
 }
@@ -76,10 +84,20 @@ main {
    keeps its heavier "Blog" heading. */
 body:has(.post-body) .blog-header h1 {
   font-weight: 700;
+=======
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-header h1 {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+>>>>>>> 37cc2e0 (blog posts)
 }
 
 .blog-header .breadcrumb {
   color: var(--muted);
+<<<<<<< HEAD
   font-size: 0.85rem;
 }
 
@@ -87,16 +105,35 @@ body:has(.post-body) .blog-header h1 {
 .blog-header .breadcrumb a:hover { color: var(--text); }
 
 /* ── Post list (blog index) ──────────────────────────────────────────────── */
+=======
+  font-size: 0.8rem;
+}
+
+.blog-header .breadcrumb a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.blog-header .breadcrumb a:hover {
+  color: var(--text);
+}
+
+>>>>>>> 37cc2e0 (blog posts)
 .post-list {
   list-style: none;
   padding: 0;
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   gap: 1.6rem;
+=======
+  gap: 1.25rem;
+>>>>>>> 37cc2e0 (blog posts)
 }
 
 .post-list li {
   border-bottom: 1px solid var(--border);
+<<<<<<< HEAD
   padding-bottom: 1.6rem;
 }
 
@@ -221,4 +258,73 @@ body:has(.post-body) .blog-header h1 {
   .post-body { font-size: 1.08rem; }
   .post-body h2 { font-size: 1.45rem; }
   .post-body h3 { font-size: 1.2rem; }
+=======
+  padding-bottom: 1.25rem;
+}
+
+.post-list li:last-child {
+  border-bottom: none;
+}
+
+.post-list a {
+  color: #e6edf3;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.post-list a:hover {
+  color: var(--link);
+}
+
+.post-list .meta {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.post-list .summary {
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* Post body — narrow column for readability. Slightly larger line-height
+   than the rest of the site since prose reads slower than headers. */
+.post-body {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+
+.post-body p {
+  margin-bottom: 1.1rem;
+}
+
+.post-body p:last-child {
+  margin-bottom: 0;
+}
+
+.post-body em {
+  color: #c9d1d9;
+}
+
+.post-meta {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.post-meta a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.post-meta a:hover {
+  color: var(--text);
+>>>>>>> 37cc2e0 (blog posts)
 }
