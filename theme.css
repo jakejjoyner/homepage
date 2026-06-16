@@ -3,8 +3,7 @@
    anti-flash snippet in each page's <head> and toggled by theme.js).
 
    Loaded before every page stylesheet, so the rest of the CSS just reads
-   var(--*). Pages may override individual token values after this file (the
-   blog does, for its Obsidian palette). */
+   var(--*). Pages may override individual token values after this file. */
 
 /* Inter — the font Obsidian ships and uses by default. Self-hosted from
    /fonts (committed to the repo) and applied site-wide via --font-sans. */

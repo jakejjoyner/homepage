@@ -4,22 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jake Joyner</title>
-<<<<<<< HEAD
-  <meta name="description" content="Building AILedger — tamper-evident audit
-  infrastructure for AI inference. Author of skillrt, a runtime for executable
-  markdown skills." />
-=======
-  <meta name="description" content="Engineer and founder building tamper-evident audit infrastructure for AI inference. Strongest in Rust, edge compute, cryptographic provenance, and EU AI Act compliance." />
->>>>>>> 37cc2e0 (blog posts)
+  <meta name="description" content="Building AILedger — tamper-evident audit infrastructure for AI inference. Author of skillrt, a runtime for executable markdown skills." />
 
   <!-- Open Graph -->
   <meta property="og:type" content="profile" />
   <meta property="og:title" content="Jake Joyner" />
-<<<<<<< HEAD
   <meta property="og:description" content="Building tamper-evident audit infrastructure for AI inference." />
-=======
-  <meta property="og:description" content="Engineer and founder building tamper-evident audit infrastructure for AI inference." />
->>>>>>> 37cc2e0 (blog posts)
   <meta property="og:url" content="https://jakejoyner.com" />
   <meta property="og:image" content="https://jakejoyner.com/assets/twilight-array.jpg" />
   <meta property="profile:first_name" content="Jake" />
@@ -29,11 +19,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Jake Joyner" />
-<<<<<<< HEAD
   <meta name="twitter:description" content="Building tamper-evident audit infrastructure for AI inference." />
-=======
-  <meta name="twitter:description" content="Engineer and founder building tamper-evident audit infrastructure for AI inference." />
->>>>>>> 37cc2e0 (blog posts)
   <meta name="twitter:image" content="https://jakejoyner.com/assets/twilight-array.jpg" />
 
   <!-- Discovery hints for agents -->
@@ -52,11 +38,7 @@
         "https://github.com/jakejjoyner",
         "https://ailedger.dev"
       ],
-<<<<<<< HEAD
       "jobTitle": "Founder, AILedger; author of skillrt",
-=======
-      "jobTitle": "Engineer and founder; author of skillrt; founder of AILedger",
->>>>>>> 37cc2e0 (blog posts)
       "worksFor": {
         "@type": "Organization",
         "name": "AILedger",
@@ -66,52 +48,18 @@
         "AI inference logging",
         "Cryptographic provenance",
         "EU AI Act Article 12 compliance",
-<<<<<<< HEAD
         "Edge compute (Cloudflare Workers)"
-=======
-        "Edge compute (Cloudflare Workers)",
-        "Rust",
-        "Markdown skill runtimes"
->>>>>>> 37cc2e0 (blog posts)
       ]
     }
   }
   </script>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="stylesheet" href="/theme.css" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="/theme.js" defer></script>
-=======
   <link rel="stylesheet" href="style.css?v=20260417b" />
->>>>>>> 27c8e1d (style: bust stale CSS cache with ?v=20260417b)
+  <script src="/theme.js" defer></script>
 </head>
 <body class="hero-page">
-=======
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="hero-page">
-  <!-- Cinematic banner — panoramic 4:1 video honored at native aspect.
-       Autoplays muted on capable browsers; a JS shim retries play() if
-       browser autoplay-policy initially blocks. Reduced-motion users see
-       the still poster instead. -->
-  <section class="hero-banner" aria-hidden="true">
-    <video
-      class="hero-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-      poster="/assets/twilight-array.jpg">
-      <source src="/assets/twilight-array-loop.mp4" type="video/mp4" />
-    </video>
-    <div class="hero-banner-fade"></div>
-  </section>
-
->>>>>>> 37cc2e0 (blog posts)
   <main class="hero">
     <header>
       <picture class="hero-avatar">
@@ -120,48 +68,16 @@
       </picture>
       <h1>Jake Joyner</h1>
       <p class="subtitle">
-<<<<<<< HEAD
         Building <a href="https://ailedger.dev">AILedger</a>, tamper-evident audit infrastructure for AI inference. Author of <a href="https://crates.io/crates/skillrt">skillrt</a>, a Rust runtime for executable markdown skills.
-=======
-        Engineer and founder. Building <a href="https://ailedger.dev">AILedger</a>, tamper-evident audit infrastructure for AI inference. Author of <a href="https://crates.io/crates/skillrt">skillrt</a>, a Rust runtime for executable markdown skills.
-      </p>
-      <p class="bio">
-        Strongest in Rust, edge compute, cryptographic provenance, and EU AI Act compliance. Twenty-one. Long-term thinker. Prefers building substrate over surface.
->>>>>>> 37cc2e0 (blog posts)
       </p>
     </header>
 
     <nav class="links">
       <a href="/portfolio/">Projects</a>
-      <a href="/blog/">Blog</a>
       <a href="/cv/">Résumé</a>
       <a href="https://github.com/jakejjoyner" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="mailto:jake@jakejoyner.com">jake@jakejoyner.com</a>
     </nav>
   </main>
-
-<<<<<<< HEAD
-=======
-  <script>
-    // Some browsers block autoplay even for muted videos in certain power
-    // / data-saver modes. If the video element didn't begin playing within
-    // a beat after load, retry once. If still blocked, the poster stays
-    // visible (acceptable fallback) rather than letting the page look dead.
-    (function() {
-      var v = document.querySelector('.hero-video');
-      if (!v) return;
-      function tryPlay() {
-        var p = v.play();
-        if (p && typeof p.catch === 'function') p.catch(function(){ /* poster stays */ });
-      }
-      v.addEventListener('loadedmetadata', tryPlay, { once: true });
-      // Fallback: try again on any user interaction (satisfies autoplay
-      // gesture-required policies on Safari/iOS).
-      var nudge = function(){ tryPlay(); document.removeEventListener('click', nudge); document.removeEventListener('touchstart', nudge); };
-      document.addEventListener('click', nudge, { once: true });
-      document.addEventListener('touchstart', nudge, { once: true });
-    })();
-  </script>
->>>>>>> 37cc2e0 (blog posts)
 </body>
 </html>

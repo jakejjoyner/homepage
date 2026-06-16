@@ -36,17 +36,6 @@ PAGE_TPL = """<!DOCTYPE html>
   <link rel="stylesheet" href="/theme.css" />
   <link rel="stylesheet" href="portfolio.css" />
   <script src="/theme.js" defer></script>
-  <style>
-    .page-note {{ color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; }}
-    .chapters {{ margin-top: 2.5rem; }}
-    .chapters h2 {{ font-size: 1.1rem; font-weight: 600; color: var(--heading); margin-bottom: 0.3rem; }}
-    .chapters .chapters-sub {{ color: var(--muted); font-size: 0.85rem; margin-bottom: 0.8rem; }}
-    .chapters ul {{ list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }}
-    .chapters li {{ color: var(--muted); font-size: 0.9rem; margin-bottom: 0.4rem; }}
-    .chapters .chapter-meta {{ display: block; color: var(--muted); font-size: 0.7rem; font-style: italic; margin-top: 0.15rem; }}
-    .chapters a {{ color: var(--link); text-decoration: none; font-weight: 600; }}
-    .chapters a:hover {{ color: var(--heading); }}
-  </style>
 </head>
 <body>
   <main>
@@ -56,14 +45,6 @@ PAGE_TPL = """<!DOCTYPE html>
     </header>
     <section class="projects">
 {cards}
-    </section>
-    <section class="chapters">
-      <h2>Chapters</h2>
-      <p class="chapters-sub">Things I did before code.</p>
-      <ul>
-        <li><a href="/portfolio/drones/">FPV</a>: six years of racing, freestyle, and builds (ages 11-17) <span class="chapter-meta">posted 2026-05-02 · updated 2026-05-31</span></li>
-        <li><a href="/portfolio/guitar/">Guitar</a>: violin, School of Rock AllStars, LA venues <span class="chapter-meta">posted 2026-05-02 · updated 2026-05-31</span></li>
-      </ul>
     </section>
     <footer>
       <p class="footer-text">{footer}</p>

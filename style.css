@@ -98,11 +98,7 @@ h1 {
    below. Reduced-motion users see the still poster banner. */
 
 body.hero-page {
-<<<<<<< HEAD
   background: var(--hero-bg);
-=======
-  background: #050811;          /* deep night sky */
->>>>>>> 37cc2e0 (blog posts)
   align-items: stretch;
   justify-content: flex-start;
   padding: 0;
@@ -117,24 +113,15 @@ body.hero-page {
      Source is 1216×304; capping max-width at 1280px keeps the video
      within ~5% of native pixel-for-pixel, so compression artifacts in
      the H.264 source don't get amplified by browser upscaling. On wide
-<<<<<<< HEAD
      viewports the page background fills the sides — reads as deliberate
      film-strip framing, not as a missing piece. */
-=======
-     viewports the dark page background fills the sides — reads as
-     deliberate film-strip framing, not as a missing piece. */
->>>>>>> 37cc2e0 (blog posts)
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
   aspect-ratio: 1216 / 304;
   max-height: 38vh;             /* never let the banner dominate the page */
   overflow: hidden;
-<<<<<<< HEAD
   background: var(--hero-bg);
-=======
-  background: #050811;
->>>>>>> 37cc2e0 (blog posts)
 }
 
 .hero-video {
@@ -154,11 +141,7 @@ body.hero-page {
   right: 0;
   bottom: 0;
   height: 25%;
-<<<<<<< HEAD
   background: linear-gradient(180deg, transparent 0%, var(--hero-bg) 100%);
-=======
-  background: linear-gradient(180deg, transparent 0%, #050811 100%);
->>>>>>> 37cc2e0 (blog posts)
   pointer-events: none;
 }
 
@@ -180,11 +163,7 @@ main.hero header {
 
 /* Stardew-style portrait — small circular avatar above the H1. Sized
    modestly so it sits as identity-anchor, not feature. Subtle ring +
-<<<<<<< HEAD
    soft shadow keeps it from feeling pasted-in over the page. */
-=======
-   soft shadow keeps it from feeling pasted-in over the dark page. */
->>>>>>> 37cc2e0 (blog posts)
 .hero-avatar {
   display: inline-block;
   margin-bottom: 1.25rem;
@@ -196,39 +175,21 @@ main.hero header {
   border-radius: 50%;
   display: block;
   object-fit: cover;
-<<<<<<< HEAD
   border: 1px solid var(--hero-avatar-ring);
   box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.4),
     0 8px 24px -8px rgba(0, 0, 0, 0.5);
   background: var(--hero-avatar-bg);
-=======
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.4),
-    0 8px 24px -8px rgba(0, 0, 0, 0.5);
-  background: #0d1117;
->>>>>>> 37cc2e0 (blog posts)
 }
 
 main.hero h1 {
   font-size: 2rem;
-<<<<<<< HEAD
   margin-bottom: 0.95rem;
   color: var(--hero-h1);
 }
 
 main.hero .subtitle {
   color: var(--text);
-=======
-  letter-spacing: -0.015em;
-  margin-bottom: 0.95rem;
-  color: #f0f6fc;
-}
-
-main.hero .subtitle {
-  color: #c9d1d9;
->>>>>>> 37cc2e0 (blog posts)
   font-size: 0.95rem;
   line-height: 1.75;
   margin-bottom: 1.1rem;
@@ -238,22 +199,14 @@ main.hero .subtitle {
 }
 
 main.hero .bio {
-<<<<<<< HEAD
   color: var(--muted);
-=======
-  color: #8b949e;
->>>>>>> 37cc2e0 (blog posts)
   font-size: 0.875rem;
   line-height: 1.75;
   max-width: 520px;
   margin: 0 auto;
 }
 
-<<<<<<< HEAD
 /* Hero nav — horizontal slash-separated links sitting on the page. */
-=======
-/* Hero nav — horizontal slash-separated links sitting on the dark page. */
->>>>>>> 37cc2e0 (blog posts)
 nav.links {
   display: flex;
   flex-direction: row;
@@ -265,11 +218,7 @@ nav.links {
 }
 
 nav.links a {
-<<<<<<< HEAD
   color: var(--text);
-=======
-  color: #c9d1d9;
->>>>>>> 37cc2e0 (blog posts)
   text-decoration: none;
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
@@ -282,22 +231,14 @@ nav.links a::before { content: none; }
 
 nav.links a + a::before {
   content: "·";
-<<<<<<< HEAD
   color: var(--hero-dot);
-=======
-  color: rgba(201, 209, 217, 0.35);
->>>>>>> 37cc2e0 (blog posts)
   position: absolute;
   left: -3px;
   pointer-events: none;
 }
 
 nav.links a:hover {
-<<<<<<< HEAD
   color: var(--hero-h1);
-=======
-  color: #f0f6fc;
->>>>>>> 37cc2e0 (blog posts)
 }
 
 @media (max-width: 600px) {
