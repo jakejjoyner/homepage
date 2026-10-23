@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jake Joyner — CV</title>
-  <meta name="description" content="Building tamper-evident audit infrastructure for AI inference." />
+  <meta name="description" content="Co-founder of AILedger, PBC; backend and infrastructure engineer; Math-CS at UC San Diego." />
 
   <!-- Open Graph -->
   <meta property="og:type" content="profile" />
   <meta property="og:title" content="Jake Joyner — CV" />
-  <meta property="og:description" content="Building tamper-evident audit infrastructure for AI inference." />
+  <meta property="og:description" content="Co-founder of AILedger, PBC; backend and infrastructure engineer; Math-CS at UC San Diego." />
   <meta property="og:url" content="https://jakejoyner.com/cv/" />
 
   <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
@@ -111,26 +111,39 @@
         Los Angeles, CA &middot;
         <a href="mailto:jake@jakejoyner.com">jake@jakejoyner.com</a> &middot;
         <a href="https://github.com/jakejjoyner">github.com/jakejjoyner</a> &middot;
+        <a href="https://www.linkedin.com/in/jake-joyner">linkedin.com/in/jake-joyner</a> &middot;
         <a href="https://ailedger.dev">ailedger.dev</a>
       </p>
     </header>
 
     <p class="cv-summary">
-      Building tamper-evident audit infrastructure for AI inference, with work spanning edge compute, cryptographic provenance, and EU AI Act compliance.
+      Co-founder and founding engineer of AILedger, PBC, and maintainer of the aDNA Network. Backend, infrastructure and security engineering: tamper-evident records, cryptographic provenance, identity, and the evaluation of code written by AI coding agents. Math-CS undergraduate at UC San Diego.
     </p>
 
     <section class="cv-section">
       <h2>Selected Work</h2>
 
       <div class="cv-entry">
-        <div class="cv-entry-title">AILedger — Founder</div>
-        <div class="cv-entry-meta">2025–present &middot; <a href="https://ailedger.dev">ailedger.dev</a></div>
+        <div class="cv-entry-title">AILedger, PBC — Co-Founder and Founding Engineer</div>
+        <div class="cv-entry-meta">March 2026 – present &middot; with Stanley Bishop &middot; <a href="https://ailedger.dev">ailedger.dev</a> &middot; <a href="https://github.com/ailedger-dev/ailedger">github.com/ailedger-dev/ailedger</a></div>
         <div class="cv-entry-body">
-          Tamper-evident chain of custody for every AI inference an enterprise's product makes, designed for the EU AI Act Article 12 conformance question (Article 79 enforcement August 2, 2026).
+          Audit substrate for AI-influenced decisions, built for Federal Rule of Evidence 707 and EU AI Act Articles 12, 19 and 26. Open source (AGPLv3; detection layer Apache-2.0).
           <ul>
-            <li>Cloudflare Workers proxy with input/output SHA-256 hashing and RFC 8785 JCS canonicalization</li>
-            <li>Per-tenant audit chain with deterministic verification path</li>
-            <li>Customer discovery underway with EU-exposed enterprise AI teams</li>
+            <li>Designed and built the codebase (about 41k lines of TypeScript and Python): Cloudflare Workers edge proxy, hash-chained PostgreSQL ledger with trigger-enforced integrity, TypeScript SDK, Python CLI, React dashboard; about 360 tests; CI enforces RFC 8785 canonicalization parity across languages</li>
+            <li>Run the company's self-hosted platform: Keycloak passkey single sign-on, Forgejo and CI, OpenBao secrets with an SSH certificate authority, mesh networking, and a tamper-evident operational record (Ed25519 signatures, RFC 6962 signed tree heads, public verifier at verify.ailedger.dev)</li>
+            <li>Reviewed and merged 3,900+ commits across 80+ repositories in 2026, most authored by LLM coding agents working from my specifications</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-title">aDNA Network — Maintainer and Org Admin</div>
+        <div class="cv-entry-meta">July 2026 – present &middot; <a href="https://adna.network">adna.network</a></div>
+        <div class="cv-entry-body">
+          Open standard and reference vaults for aDNA (Agentic DNA), a knowledge-graph architecture shared by people and AI agents.
+          <ul>
+            <li>Designed and shipped the cross-platform node installer and enrollment system: 25 signed releases across six channels, a Cloudflare Worker enrollment queue that holds no signing keys, and a stdlib RFC 8032 signature verifier</li>
+            <li>Wrote the network's trust-tier threat model (ADR-022) and deployed fleet secrets on OpenBao</li>
           </ul>
         </div>
       </div>
@@ -170,10 +183,10 @@
 
       <div class="cv-entry">
         <div class="cv-entry-title">University of California, San Diego</div>
-        <div class="cv-entry-meta">September 2025 – April 2026 (departed)</div>
+        <div class="cv-entry-meta">September 2025 – present &middot; B.S. Mathematics-Computer Science, expected June 2027</div>
         <div class="cv-entry-body">
-          Mathematics / Computer Science &middot; Member, IEEE-Eta Kappa Nu (HKN) &middot; Departed to focus full-time on AILedger.<br />
-          Coursework: abstract algebra, combinatorics, extremal graph theory.
+          James R. Bunch Mathematics Endowed Scholar (2026–27) &middot; Provost Honors (Fall 2025) &middot; IEEE-Eta Kappa Nu, Kappa Psi chapter<br />
+          Coursework: abstract algebra, combinatorics, extremal graph theory, optimization, systems programming in C.
         </div>
       </div>
 
@@ -190,19 +203,19 @@
       <h2>Technical Skills</h2>
 
       <div class="skills-row">
-        <span class="label">Languages:</span> Python &middot; TypeScript &middot; JavaScript &middot; SQL &middot; Go &middot; Rust &middot; C/C++ &middot; Java
+        <span class="label">Languages:</span> Python &middot; TypeScript &middot; JavaScript &middot; SQL &middot; Bash &middot; Rust &middot; Go &middot; PowerShell &middot; C/C++
       </div>
       <div class="skills-row">
-        <span class="label">Infrastructure:</span> Cloudflare Workers &middot; edge compute &middot; audit-trail systems &middot; cryptographic provenance (SHA-256, RFC 8785 JCS) &middot; AI inference middleware &middot; PostgreSQL &middot; SQLite &middot; Docker
+        <span class="label">Infrastructure and security:</span> Cloudflare Workers, Pages, KV, Durable Objects &middot; PostgreSQL &middot; SQLite &middot; Linux (Arch, systemd) &middot; Docker and rootless podman &middot; Keycloak / OIDC &middot; OpenBao &middot; Nebula, NetBird, Tailscale &middot; hash chains, Merkle trees, RFC 6962, Ed25519, RFC 8785 JCS
       </div>
       <div class="skills-row">
         <span class="label">Frontend:</span> React &middot; HTML / CSS
       </div>
       <div class="skills-row">
-        <span class="label">Tools:</span> Linux &middot; Vim &middot; Git &middot; LaTeX &middot; OpenGL
+        <span class="label">AI / LLM:</span> LLM evaluation and benchmark design &middot; rubric and LLM-judge gates &middot; pairwise preference (Bradley-Terry) &middot; agentic coding tools (Claude Code, Codex) &middot; MCP servers &middot; llama.cpp local inference
       </div>
       <div class="skills-row">
-        <span class="label">Domain knowledge:</span> EU AI Act (Articles 12 &amp; 79) &middot; tamper-evident logging &middot; AI inference observability &middot; compliance infrastructure
+        <span class="label">Domain knowledge:</span> EU AI Act (Articles 12, 19, 26) &middot; Federal Rule of Evidence 707 &middot; tamper-evident logging &middot; transparency logs &middot; compliance infrastructure
       </div>
     </section>
 
