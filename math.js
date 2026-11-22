@@ -1,6 +1,7 @@
 /* math.js: render LaTeX on any page of the site, as native MathML (no stylesheet).
  *
- * The deploy step adds this script to every HTML page, so new pages get it without doing anything.
+ * Every page loads it with  <script defer src="/math.js"></script>  in its <head>; new blog posts copy that line from
+ * an existing post. (jakejoyner.com is served straight from the repository files, so nothing can be added at deploy time.)
  * It downloads the Temml library (temml.min.js, MIT, github.com/ronkok/Temml) only when a page contains math.
  *
  * Delimiters:  $...$  and  \(...\)  inline;   $$...$$  and  \[...\]  on their own line (display).

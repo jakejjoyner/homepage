@@ -57,8 +57,6 @@ jobs:
             --exclude='.assetsignore' \
             --exclude='.gitignore' \
             ./ dist/
-          # Every page gets /math.js (LaTeX rendering) without having to remember the tag.
-          find dist -name '*.html' -exec sed -i 's|</head>|  <script defer src="/math.js"></script>\n</head>|' {} +
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
