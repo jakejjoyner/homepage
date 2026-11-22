@@ -38,6 +38,14 @@ Since then the fan runs steadily and quietly, the processor stays between 56 and
 
 I sent the analysis to System76 support. A few days later another Lemur Pro owner, with a different processor, reported the same thing on the firmware's issue tracker ([issue 578](https://github.com/system76/ec/issues/578)), and I added my measurements there. The firmware's maintainer has since opened a rewrite of the temperature code that asks the processor for its real maximum instead of assuming one ([pull request 580](https://github.com/system76/ec/pull/580)). It is still in progress as I write this.
 
+## Check upstream first
+
+My first instinct after the diagnosis was to write the fix and send it. Before doing that I looked at the firmware's repository, and I am glad I did: the issue had been filed a few days earlier and the maintainer's rewrite was already open. A patch from me would have duplicated work that was further along and better than mine.
+
+The same thing happened with a second fix. The week before, I had patched my laptop's boot firmware by hand so that hibernation would resume correctly. When I went to offer that upstream, the same change had been in System76's source since August. My laptop was simply running firmware older than the fix.
+
+So the order I follow now is: read the project's current code, search its issues and open pull requests, and only then write anything. What was useful to the project was not a patch. It was a second set of measurements on a different processor, and an offer to test the maintainer's version on real hardware.
+
 ## What I take from it
 
 The bug was a comment that said "probably the same", carried forward to processors nobody checked it against. Nothing caught it, because a wrong constant does not crash anything. It makes a fan come on late.
