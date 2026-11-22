@@ -264,3 +264,10 @@ nav.links a:hover {
     background: url('/assets/twilight-array.jpg') center / cover no-repeat;
   }
 }
+
+.pgp-fpr {
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
