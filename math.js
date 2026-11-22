@@ -18,7 +18,20 @@
   // plain text between formulas: escape for HTML, and turn \$ into a literal dollar sign
   function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\\\$/g, '$'); }
 
+  // One style rule, added only on pages that have math: use a proper math font. Prefers one already on the reader's
+  // machine (no download); otherwise fetches Latin Modern Math (GUST Font License) from this site.
+  function font() {
+    if (document.getElementById('math-font')) return;
+    var st = document.createElement('style');
+    st.id = 'math-font';
+    st.textContent = '@font-face{font-family:"Site Math";font-display:swap;src:local("Latin Modern Math"),' +
+      'local("STIX Two Math"),local("Cambria Math"),url("' + new URL('latinmodern-math.woff2', SRC).href +
+      '") format("woff2")}math{font-family:"Site Math",math}';
+    document.head.appendChild(st);
+  }
+
   function typeset(root) {
+    font();
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), nodes = [], n;
     while ((n = walker.nextNode())) {
       if ((MATH.test(n.nodeValue) || n.nodeValue.indexOf('\\$') >= 0) && !n.parentElement.closest(SKIP)) nodes.push(n);
